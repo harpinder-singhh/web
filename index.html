@@ -1,35 +1,44 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>Axcentra — Internship & Training</title>
-
+    <title>Axcentra — Live Projects & Industrial Internships</title>
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
+       
         :root {
             --bg-color: #050505;
             --bg-grid: rgba(255, 255, 255, 0.02);
-            --card-bg: rgba(255, 255, 255, 0.03);
+             
+            --card-bg: rgba(255, 255, 255, 0.03); 
             --card-border: rgba(255, 255, 255, 0.08);
             --card-hover: rgba(255, 255, 255, 0.07);
             --card-blur: blur(16px);
+            
             --nav-bg: rgba(5, 5, 5, 0.3);
             --nav-border: rgba(255, 255, 255, 0.05);
+            
             --text-main: #ffffff;
             --text-muted: #a1a1aa;
+            
             --accent-blue: #3b82f6;
             --accent-purple: #8b5cf6;
             --accent-cyan: #06b6d4;
             --accent-gradient: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+            
             --radius-xl: 24px;
             --radius-pill: 100px;
             --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.5);
+            
             --font-head: 'Outfit', sans-serif;
             --font-body: 'Inter', sans-serif;
+            
             --contact-input-bg: rgba(255, 255, 255, 0.05);
             --contact-input-border: rgba(255, 255, 255, 0.1);
             --contact-btn-bg: #ffffff;
@@ -53,17 +62,17 @@
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; outline: none; -webkit-tap-highlight-color: transparent; }
-
-        html, body {
+        
+        html, body { 
             width: 100%;
-            overflow-x: hidden;
-            scroll-behavior: smooth;
+            overflow-x: hidden; 
+            scroll-behavior: smooth; 
         }
 
         body {
             font-family: var(--font-body);
             background-color: var(--bg-color);
-            background-image:
+            background-image: 
                 linear-gradient(var(--bg-grid) 1px, transparent 1px),
                 linear-gradient(90deg, var(--bg-grid) 1px, transparent 1px);
             background-size: 50px 50px;
@@ -108,24 +117,24 @@
             transition: all 0.3s ease;
             width: 100%;
         }
-
-        .brand {
-            display: flex; align-items: center; gap: 12px;
-            font-family: var(--font-head); font-weight: 700; font-size: 1.2rem;
+        
+        .brand { 
+            display: flex; align-items: center; gap: 12px; 
+            font-family: var(--font-head); font-weight: 700; font-size: 1.2rem; 
             color: var(--text-main); letter-spacing: -0.5px;
             white-space: nowrap;
         }
-
-        .brand img {
-            width: 40px; height: 40px;
+        
+        .brand img { 
+            width: 40px; height: 40px; 
             border-radius: 50%;
             border: 2px solid var(--card-border);
             object-fit: cover;
         }
 
         .nav-links { display: flex; gap: 25px; }
-        .nav-links a {
-            font-size: 0.95rem; font-weight: 500; color: var(--text-muted);
+        .nav-links a { 
+            font-size: 0.95rem; font-weight: 500; color: var(--text-muted); 
             position: relative;
         }
         .nav-links a:hover, .nav-links a.active { color: var(--text-main); }
@@ -136,20 +145,21 @@
         .nav-links a:hover::after { width: 100%; }
 
         .btn-ios {
-            background: var(--text-main); color: var(--bg-color);
+            background: var(--text-main); color: var(--bg-color); 
             font-weight: 600; font-size: 0.9rem;
             padding: 10px 24px; border-radius: var(--radius-pill);
             border: none; cursor: pointer; transition: 0.3s;
             display: inline-flex; align-items: center; gap: 8px;
             font-family: var(--font-head); justify-content: center;
         }
-        .btn-ios:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 0 20px rgba(123, 97, 255, 0.4);
+        .btn-ios:hover { 
+            transform: translateY(-2px); 
+            box-shadow: 0 0 20px rgba(123, 97, 255, 0.4); 
         }
 
+        /* PRIMARY CTA BUTTON */
         .btn-gradient {
-            background: var(--accent-gradient);
+            background: var(--accent-gradient); 
             color: #ffffff;
             font-weight: 600; font-size: 0.95rem;
             padding: 16px 32px; border-radius: var(--radius-pill);
@@ -162,29 +172,30 @@
             transform: translateY(-2px);
             box-shadow: 0 10px 30px rgba(139, 92, 246, 0.6);
         }
-
+        
         .btn-glass-nav {
-            background: rgba(255, 255, 255, 0.05); color: var(--text-main);
+            background: rgba(255, 255, 255, 0.05); color: var(--text-main); 
             border: 1px solid var(--card-border);
-            padding: 10px 24px; border-radius: var(--radius-pill); cursor: pointer;
+            padding: 10px 24px; border-radius: var(--radius-pill); cursor: pointer; 
             font-size: 0.9rem; font-weight: 600; font-family: var(--font-head);
             transition: 0.3s;
         }
-        .btn-glass-nav:hover {
-            background: rgba(255, 255, 255, 0.1);
+        .btn-glass-nav:hover { 
+            background: rgba(255, 255, 255, 0.1); 
             border-color: var(--accent-blue);
             box-shadow: 0 0 15px rgba(59, 130, 246, 0.3);
         }
 
+        /* SECONDARY CTA BUTTON */
         .btn-free-hero {
             background: rgba(255, 255, 255, 0.08);
             color: var(--text-main);
             border: 1px solid var(--accent-cyan);
-            padding: 16px 32px;
+            padding: 16px 32px; 
             border-radius: var(--radius-pill);
-            cursor: pointer;
-            font-size: 0.95rem;
-            font-weight: 600;
+            cursor: pointer; 
+            font-size: 0.95rem; 
+            font-weight: 600; 
             font-family: var(--font-head);
             display: inline-flex; align-items: center; gap: 10px;
             transition: 0.3s;
@@ -194,7 +205,7 @@
 
         .btn-free-hero:hover {
             background: rgba(6, 182, 212, 0.15);
-            box-shadow: 0 0 25px rgba(6, 182, 212, 0.4);
+            box-shadow: 0 0 25px rgba(6, 182, 212, 0.4); 
             transform: translateY(-2px);
             border-color: #fff;
         }
@@ -215,6 +226,7 @@
         [data-theme="light"] .btn-free-hero:hover i {
             color: #ffffff;
         }
+
         .theme-toggle {
             background: transparent; border: none; color: var(--text-main);
             font-size: 1.2rem; cursor: pointer; width: 40px; height: 40px;
@@ -223,16 +235,16 @@
         }
         .theme-toggle:hover { background: rgba(255,255,255,0.1); color: var(--accent-blue); }
 
-        .hamburger {
-            display: none; background: none; border: none;
-            color: var(--text-main); font-size: 1.5rem;
+        .hamburger { 
+            display: none; background: none; border: none; 
+            color: var(--text-main); font-size: 1.5rem; 
             cursor: pointer; padding: 5px; line-height: 1; margin-left: 10px;
         }
 
         section { padding: 100px 0; position: relative; }
-
-        .hero {
-            padding-top: 140px; min-height: 100vh;
+        
+        .hero { 
+            padding-top: 140px; min-height: 100vh; 
             display: flex; align-items: center;
         }
         .hero-grid {
@@ -242,8 +254,8 @@
         .hero-content { text-align: left; }
         .hero-badge {
             display: inline-flex; align-items: center; gap: 8px;
-            padding: 8px 16px; border: 1px solid var(--card-border); border-radius: 50px;
-            font-size: 0.85rem; margin-bottom: 25px;
+            padding: 8px 16px; border: 1px solid var(--card-border); border-radius: 50px; 
+            font-size: 0.85rem; margin-bottom: 25px; 
             background: rgba(59, 130, 246, 0.1); color: var(--accent-cyan); font-weight: 600;
             backdrop-filter: blur(5px);
         }
@@ -254,7 +266,7 @@
             font-size: clamp(3rem, 5vw, 4.5rem); font-weight: 800; line-height: 1.1; margin-bottom: 25px;
             letter-spacing: -1px;
             text-shadow: 0 0 40px rgba(59, 130, 246, 0.2);
-            min-height: 2.4em;
+            min-height: 2.4em; 
         }
         .hero-gradient-text {
             background: var(--accent-gradient);
@@ -271,9 +283,9 @@
         }
         .hero-btns { display: flex; gap: 15px; flex-wrap: wrap; }
 
-        .hero-visual {
-            position: relative; height: 500px; display: flex;
-            align-items: center; justify-content: center;
+        .hero-visual { 
+            position: relative; height: 500px; display: flex; 
+            align-items: center; justify-content: center; 
             perspective: 1000px;
         }
         .cube-wrapper {
@@ -317,7 +329,7 @@
         .planet {
             position: absolute; top: 50%; left: 50%;
             width: 50px; height: 50px; margin: -25px;
-            background: var(--card-bg);
+            background: var(--card-bg); 
             border: 1px solid var(--card-border);
             backdrop-filter: blur(10px);
             border-radius: 50%; display: grid; place-items: center;
@@ -326,7 +338,7 @@
         }
         .p1 { transform: translateX(200px); }
         .p2 { transform: translateX(-200px); }
-
+        
         @keyframes spinRing { 100% { transform: rotateX(75deg) rotateZ(360deg); } }
         @keyframes counterSpin { 100% { transform: rotateZ(-360deg); } }
 
@@ -356,7 +368,7 @@
         .bento-grid {
             display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 30px;
         }
-
+        
         .tilt-card {
             background: var(--card-bg);
             border: 1px solid var(--card-border);
@@ -369,22 +381,22 @@
             overflow: hidden; height: 100%;
             box-shadow: 0 4px 20px rgba(0,0,0,0.1);
         }
-        .tilt-card:hover {
-            border-color: rgba(255,255,255,0.2);
+        .tilt-card:hover { 
+            border-color: rgba(255,255,255,0.2); 
             background: var(--card-hover);
             box-shadow: 0 20px 40px -10px rgba(0,0,0,0.6), 0 0 20px rgba(59, 130, 246, 0.2);
         }
-
-        .intern-img {
+        
+        .course-img {
             height: 200px; border-radius: 16px; overflow: hidden; margin-bottom: 20px;
             position: relative;
         }
-        .intern-img img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
-        .tilt-card:hover .intern-img img { transform: scale(1.05); }
-
+        .course-img img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
+        .tilt-card:hover .course-img img { transform: scale(1.05); }
+        
         .tag {
             position: absolute; top: 10px; right: 10px;
-            background: rgba(0,0,0,0.7); color: #fff;
+            background: rgba(0,0,0,0.7); color: #fff; 
             padding: 4px 10px; border-radius: 4px; font-size: 0.75rem; font-weight: 600;
             backdrop-filter: blur(4px);
         }
@@ -396,16 +408,8 @@
         .stat h4 { font-size: 2.5rem; font-weight: 800; color: var(--accent-blue); font-family: var(--font-head); margin-bottom: 5px; }
         .stat p { font-size: 0.9rem; color: var(--text-muted); }
 
-        .cert-container {
-            background: rgba(255,255,255,0.02);
-            backdrop-filter: blur(20px);
-            border-radius: 30px; padding: 50px;
-            border: 1px solid var(--card-border);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.2);
-        }
-
         .faq-wrapper { max-width: 900px; margin: 0 auto; }
-
+        
         .faq-item {
             background: var(--card-bg);
             border: 1px solid var(--card-border);
@@ -416,7 +420,7 @@
             transition: all 0.3s ease;
         }
         .faq-item:hover { border-color: var(--accent-blue); background: var(--card-hover); }
-
+        
         .faq-question {
             padding: 20px 24px; display: flex; justify-content: space-between;
             align-items: center; cursor: pointer;
@@ -434,7 +438,7 @@
             padding: 0 24px 24px 24px; color: var(--text-muted);
             line-height: 1.6; margin: 0; font-size: 0.95rem;
         }
-
+        
         .faq-item.active {
             background: rgba(59, 130, 246, 0.05);
             border-color: var(--accent-blue);
@@ -445,7 +449,7 @@
         .contact-container {
             background: var(--card-bg);
             backdrop-filter: blur(25px);
-            border: 1px solid var(--accent-blue);
+            border: 1px solid var(--accent-blue);  
             border-radius: 20px;
             padding: 50px;
             max-width: 900px;
@@ -464,15 +468,15 @@
         .contact-label { display: block; font-size: 1rem; color: var(--text-muted); margin-bottom: 8px; }
         .contact-value { font-size: 1.1rem; color: var(--text-main); font-weight: 500; text-decoration: none; display: block; margin-bottom: 30px; }
         .form-group { margin-bottom: 20px; }
-
+        
         .form-input {
             width: 100%; padding: 14px 18px; border-radius: 8px;
             border: 1px solid var(--contact-input-border);
             background: var(--contact-input-bg); color: var(--text-main);
             font-family: inherit; font-size: 0.95rem; transition: 0.3s;
         }
-        .form-input:focus {
-            border-color: var(--accent-blue);
+        .form-input:focus { 
+            border-color: var(--accent-blue); 
             background: rgba(59, 130, 246, 0.05);
             box-shadow: 0 0 10px rgba(59,130,246,0.1);
         }
@@ -496,16 +500,16 @@
             .island-nav { padding: 12px 16px; width: 100%; margin: 0; }
             .nav-links, .nav-desktop-btns { display: none !important; }
             .hamburger { display: block; }
-
+            
             .hero { padding-top: 110px; }
-
-            .hero h1 {
-                font-size: 2.5rem;
-                min-height: 5em;
+             
+            .hero h1 { 
+                font-size: 2.5rem; 
+                min-height: 5em;  
             }
 
             .bento-grid { grid-template-columns: 1fr; }
-
+            
             .contact-wrapper { grid-template-columns: 1fr; gap: 40px; }
             .footer-row { grid-template-columns: 1fr; gap: 40px; }
             .footer-bottom-bar { text-align: center; }
@@ -513,33 +517,32 @@
             .footer-brand { display:flex; flex-direction:column; align-items:center; text-align:center; }
             .footer-col { text-align:center; }
             .footer-list li { justify-content: center; }
-
+            
             .wrap { width: 90%; }
-            .cert-container { padding: 25px 20px; }
             .contact-container { padding: 30px 20px; }
             section { padding: 60px 0; }
 
-            .tilt-card .fa-chalkboard-teacher,
+            .tilt-card .fa-chalkboard-teacher, 
             .tilt-card .fa-laptop-code {
-                flex-shrink: 0;
+                flex-shrink: 0;  
             }
             .about-grid .tilt-card > div > div {
-                padding: 20px !important;
+                padding: 20px !important; 
             }
-
+            
             .section-header h2, .about-grid h2 {
-                font-size: 2rem !important;
+                font-size: 2rem !important;  
                 word-wrap: break-word;
             }
-
+            
             .stats-row {
-                flex-wrap: wrap;
+                flex-wrap: wrap;  
                 gap: 20px;
-                justify-content: center;
+                justify-content: center;  
             }
             .stat {
                 text-align: center;
-                min-width: 120px;
+                min-width: 120px;  
             }
 
             p { max-width: 100%; }
@@ -547,53 +550,48 @@
         }
 
         .mobile-menu {
-            position: fixed; inset: 0;
-            width: 100%; height: 100%;
-            background: rgba(5,5,5,0.98);
-            backdrop-filter: blur(25px);
+            position: fixed; inset: 0; 
+            width: 100%; height: 100%; 
+            background: rgba(5,5,5,0.98); 
+            backdrop-filter: blur(25px); 
             z-index: 1500;
             display: flex; flex-direction: column; align-items: center; justify-content: center;
-            gap: 20px;
-            transform: translateX(100%);
+            gap: 20px; 
+            transform: translateX(100%); 
             transition: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
             overflow-y: auto; padding: 20px;
-            color: #ffffff;
+            color: #ffffff; 
         }
         .mobile-menu.active { transform: translateX(0); }
-
-        .mobile-link {
-            font-size: 1.4rem;
-            font-weight: 600;
-            color: #ffffff !important;
-            font-family: var(--font-head);
+        
+        .mobile-link { 
+            font-size: 1.4rem; 
+            font-weight: 600; 
+            color: #ffffff !important; 
+            font-family: var(--font-head); 
             padding: 8px;
             transition: color 0.3s;
         }
         .mobile-link:hover { color: var(--accent-blue) !important; text-shadow: 0 0 10px rgba(59,130,246,0.5); }
-
+        
         .mobile-menu #closeMenu { color: #ffffff !important; }
 
         .mobile-menu-actions {
             display: flex; flex-direction: column; gap: 15px; width: 100%; max-width: 300px;
             align-items: center; margin-top: 10px;
         }
-        .mobile-menu-actions .btn-glass-nav {
-            width: 100%; justify-content: center;
-            color: #ffffff !important;
-            border-color: rgba(255,255,255,0.2);
-        }
         .mobile-menu-actions .btn-ios { width: 100%; justify-content: center; }
         .mobile-menu-actions .theme-toggle {
             color: #ffffff !important;
             border: 1px solid rgba(255,255,255,0.2);
         }
-
-        .footer-main {
-            margin-top: 100px; padding: 70px 0 30px;
-            background: var(--card-bg);
+ 
+        .footer-main { 
+            margin-top: 100px; padding: 70px 0 30px; 
+            background: var(--card-bg); 
             border-top: 1px solid var(--accent-blue);
-            backdrop-filter: blur(25px);
-            font-size: 0.95rem;
+            backdrop-filter: blur(25px); 
+            font-size: 0.95rem; 
         }
         .footer-row { display: grid; grid-template-columns: 1.5fr 1fr 1.2fr; gap: 50px; margin-bottom: 50px; }
         .footer-brand p { color: var(--text-muted); line-height: 1.6; margin: 20px 0; max-width: 320px; }
@@ -612,7 +610,7 @@
         .footer-list a:hover { color: var(--accent-blue); padding-left: 5px; text-shadow: 0 0 5px rgba(59,130,246,0.5); }
         .footer-bottom-bar {
             border-top: 1px solid var(--card-border); padding-top: 30px; text-align: center;
-            color: var(--text-muted);
+            color: var(--text-muted); 
             font-size: 0.85rem; display: flex; flex-direction: column; gap: 10px;
         }
         .footer-bottom-bar a {
@@ -632,19 +630,18 @@
             opacity: 0; pointer-events: none; transition: 0.3s;
         }
         .modal-overlay.open { opacity: 1; pointer-events: auto; }
-
+        
         .modal-window {
-            background: rgba(20, 20, 20, 0.7);
+            background: rgba(20, 20, 20, 0.7); 
             backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.1); 
             padding: 30px; border-radius: 20px; width: 90%; max-width: 450px;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.5), 0 0 30px rgba(59, 130, 246, 0.15);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.5), 0 0 30px rgba(59, 130, 246, 0.15); 
             position: relative;
             color: #ffffff !important;
         }
         .modal-window h3 { color: #ffffff !important; }
-        .modal-window #closeGame, .modal-window #closeCert { color: #ffffff !important; opacity: 0.8; }
-        .modal-window input { color: #ffffff !important; }
+        .modal-window #closeGame { color: #ffffff !important; opacity: 0.8; }
     </style>
 </head>
 
@@ -675,7 +672,7 @@
                     <button class="theme-toggle" id="themeBtn"><i class="fas fa-moon"></i></button>
                     <a href="https://axcentra.site" target="_blank" class="btn-ios">Login <i class="fas fa-arrow-right"></i></a>
                 </div>
-
+                
                 <button class="hamburger" id="menuBtn"><i class="fas fa-bars"></i></button>
             </div>
         </div>
@@ -683,15 +680,15 @@
 
     <div class="mobile-menu" id="mobileMenu">
         <button id="closeMenu" style="position:absolute; top:30px; right:30px; background:none; border:none; font-size:1.8rem;"><i class="fas fa-times"></i></button>
-
+        
         <a href="#home" class="mobile-link">Home</a>
         <a href="#about" class="mobile-link">About Us</a>
-        <a href="#internships" class="mobile-link">Internships</a>
+        <a href="#internships" class="mobile-link">Internship Domains</a>
         <a href="#reviews" class="mobile-link">Student Reviews</a>
         <a href="#contact" class="mobile-link">Contact</a>
-
+        
         <div style="height: 1px; width: 60px; background: rgba(255,255,255,0.2); margin: 10px 0;"></div>
-
+        
         <div class="mobile-menu-actions">
             <a href="https://axcentra.site" target="_blank" class="btn-ios">
                 Login <i class="fas fa-arrow-right"></i>
@@ -707,13 +704,17 @@
         <section id="home" class="hero wrap">
             <div class="hero-grid">
                 <div class="hero-content">
-                    <div class="hero-badge"><i class="fas fa-award"></i> AICTE & MSME Approved Internship</div>
-                    <h1>Gain Real <span class="hero-gradient-text type-wrap"><span class="typewriter" id="typingText"></span></span><br>Experience.</h1>
-                    <p>Join Axcentra's industry-focused internship program. Work on live projects, get mentored by experts, and earn a verified certificate recognized by AICTE & MSME.</p>
-
+                    <div class="hero-badge"><i class="fas fa-award"></i> AICTE & MSME Approved</div>
+                    <h1>Launch Your Career in <span class="hero-gradient-text type-wrap"><span class="typewriter" id="typingText"></span></span><br>Today.</h1>
+                    <p>Unlock your potential with hands-on internships, live projects, and mentorship from industry experts. The smartest way to become job-ready.</p>
+                    
                     <div class="hero-btns">
-                        <a href="https://forms.gle/3VzjHGNCtsCpx6RU9" target="_blank" class="btn-gradient">
-                            <i class="fas fa-paper-plane"></i> Apply Internship
+                        <a href="#internships" class="btn-free-hero">
+                            <i class="fas fa-briefcase" style="color:var(--accent-cyan);"></i> Explore Domains
+                        </a>
+
+                        <a href="https://forms.gle/3VzjHGNCtsCpx6RU9" class="btn-gradient" target="_blank">
+                            <i class="fas fa-paper-plane"></i> Apply for Internship
                         </a>
                     </div>
                 </div>
@@ -723,7 +724,7 @@
                         <div class="planet p1"><i class="fab fa-aws" style="color:#FF9900"></i></div>
                         <div class="planet p2"><i class="fas fa-code-branch" style="color:#F05032"></i></div>
                     </div>
-
+                    
                     <div class="cube-wrapper">
                         <div class="cube">
                             <div class="cube-face front"><i class="fab fa-react"></i></div>
@@ -736,7 +737,7 @@
                     </div>
 
                     <div class="float-card fc1">
-                        <div style="font-size:0.8rem; color:var(--text-muted);">Interns Trained</div>
+                        <div style="font-size:0.8rem; color:var(--text-muted);">Interns Guided</div>
                         <div style="font-size:1.2rem; color:var(--text-main);">4,000+</div>
                     </div>
                     <div class="float-card fc2">
@@ -759,15 +760,15 @@
                                 <div style="display:flex; gap:15px; align-items:center;">
                                     <div style="width:50px; height:50px; background:rgba(59,130,246,0.1); border-radius:12px; display:flex; align-items:center; justify-content:center; color:var(--accent-blue); font-size:1.2rem;"><i class="fas fa-chalkboard-teacher"></i></div>
                                     <div>
-                                        <h4 style="font-size:1.1rem; color:#fff; margin:0;">Industry-Ready Internship</h4>
-                                        <p style="font-size:0.9rem; color:rgba(255,255,255,0.7); margin:0;">Our programs are designed with direct input from industry experts.</p>
+                                        <h4 style="font-size:1.1rem; color:#fff; margin:0;">Industrial Internships</h4>
+                                        <p style="font-size:0.9rem; color:rgba(255,255,255,0.7); margin:0;">Our internship programs are structured with direct input from industry experts.</p>
                                     </div>
                                 </div>
                                 <div style="display:flex; gap:15px; align-items:center;">
                                     <div style="width:50px; height:50px; background:rgba(139,92,246,0.1); border-radius:12px; display:flex; align-items:center; justify-content:center; color:var(--accent-purple); font-size:1.2rem;"><i class="fas fa-laptop-code"></i></div>
                                     <div>
                                         <h4 style="font-size:1.1rem; color:#fff; margin:0;">Live Projects</h4>
-                                        <p style="font-size:0.9rem; color:rgba(255,255,255,0.7); margin:0;">Build real things, not just tutorials.</p>
+                                        <p style="font-size:0.9rem; color:rgba(255,255,255,0.7); margin:0;">Build real industrial applications, not just basic tutorials.</p>
                                     </div>
                                 </div>
                             </div>
@@ -776,17 +777,17 @@
                 </div>
                 <div>
                     <h2 style="font-family: var(--font-head); font-size: 2.5rem; margin-bottom: 20px;">Bridging the Gap Between <span class="hero-gradient-text">Degree & Industry</span></h2>
-                    <p style="color:var(--text-muted); line-height: 1.6; margin-bottom: 30px;">Axcentra is a premier technology internship provider. Our practical, project-first approach ensures that interns gain real-world skills that make them job-ready immediately after graduation.</p>
-
+                    <p style="color:var(--text-muted); line-height: 1.6; margin-bottom: 30px;">Axcentra is a premier technology internship provider. Our practical, project-first approach ensures that students gain real-world industrial experience that makes them job-ready immediately after graduation.</p>
+                    
                     <div class="stats-row">
                         <div class="stat">
                             <h4>4500+</h4>
-                            <p>Interns Trained</p>
+                            <p>Internships Completed</p>
                         </div>
-
+                     
                         <div class="stat">
-                            <h4>Verified</h4>
-                            <p>Certification</p>
+                            <h4>Top</h4>
+                            <p>Industry Mentors</p>
                         </div>
                            <div class="stat">
                             <h4>50+</h4>
@@ -799,133 +800,127 @@
 
         <section id="internships" class="wrap">
             <div class="section-header">
-                <h2>Our <span class="hero-gradient-text">Internship Domains</span></h2>
-                <p>Curated internship paths designed to take you from beginner to job-ready professional.</p>
+                <h2>Internship <span class="hero-gradient-text">Domains</span></h2>
+                <p>Hands-on internship programs designed to transform students into job-ready professionals.</p>
             </div>
-
+            
             <div class="bento-grid">
                 <div class="tilt-card">
-                    <div class="intern-img">
+                    <div class="course-img">
                         <img src="images/full-stack.jpg" onerror="this.src='https://placehold.co/600x400/111/2997ff?text=Full+Stack'" alt="MERN">
                         <div class="tag">Trending</div>
                     </div>
-                    <h3>Full Stack Web Development</h3>
-                    <p>Master the MERN stack (MongoDB, Express, React, Node) and build scalable web apps.</p>
-                    <a href="https://forms.gle/3VzjHGNCtsCpx6RU9" target="_blank" class="btn-glass-nav" style="text-align:center;">Apply Now</a>
-                </div>
-
-
-                <div class="tilt-card">
-                    <div class="intern-img">
-                        <img src="images/c-programming.jpg" onerror="this.src='https://placehold.co/600x400/111/f89820?text=Java'" alt="Java">
-                    </div>
-                    <h3>C Programming Internship</h3>
-                    <p>Master the fundamentals of programming.</p>
-                    <a href="https://forms.gle/3VzjHGNCtsCpx6RU9" target="_blank" class="btn-glass-nav" style="text-align:center;">Apply Now</a>
+                    <h3>Full Stack Web Dev</h3>
+                    <p>Work on live MERN stack (MongoDB, Express, React, Node) projects and gain complete deployment experience.</p>
+                    <a href="https://forms.gle/3VzjHGNCtsCpx6RU9" target="_blank" class="btn-glass-nav" style="text-align:center;">Apply for Internship</a>
                 </div>
 
                 <div class="tilt-card">
-                    <div class="intern-img">
-                        <img src="images/cpp-programming.jpg" onerror="this.src='https://placehold.co/600x400/111/f89820?text=Java'" alt="Java">
+                    <div class="course-img">
+                        <img src="images/c-programming.jpg" onerror="this.src='https://placehold.co/600x400/111/f89820?text=C'" alt="C Programming">
                     </div>
-                    <h3>C++ Programming Internship</h3>
-                    <p>Learn object-oriented programming with C++ and build efficient, high-performance applications.</p>
-                    <a href="https://forms.gle/3VzjHGNCtsCpx6RU9" target="_blank" class="btn-glass-nav" style="text-align:center;">Apply Now</a>
+                    <h3>C Programming</h3>
+                    <p>Build a strong logic foundation by working on core C programming assignments and mini-projects.</p>
+                    <a href="https://forms.gle/3VzjHGNCtsCpx6RU9" target="_blank" class="btn-glass-nav" style="text-align:center;">Apply for Internship</a>
                 </div>
 
                 <div class="tilt-card">
-                    <div class="intern-img">
-                        <img src="images/cloud-computing.jpg" onerror="this.src='https://placehold.co/600x400/111/f89820?text=Java'" alt="Java">
+                    <div class="course-img">
+                        <img src="images/cpp-programming.jpg" onerror="this.src='https://placehold.co/600x400/111/f89820?text=C++'" alt="C++">
                     </div>
-                    <h3>Cloud Computing with AWS Internship</h3>
-                    <p>Learn cloud infrastructure, services, and deployment on Amazon Web Services.</p>
-                    <a href="https://forms.gle/3VzjHGNCtsCpx6RU9" target="_blank" class="btn-glass-nav" style="text-align:center;">Apply Now</a>
+                    <h3>C++ Programming</h3>
+                    <p>Develop object-oriented solutions and high-performance applications through hands-on industrial tasks.</p>
+                    <a href="https://forms.gle/3VzjHGNCtsCpx6RU9" target="_blank" class="btn-glass-nav" style="text-align:center;">Apply for Internship</a>
                 </div>
 
                 <div class="tilt-card">
-                    <div class="intern-img">
-                        <img src="images/BI.png" onerror="this.src='https://placehold.co/600x400/111/f89820?text=Java'" alt="Java">
+                    <div class="course-img">
+                        <img src="images/cloud-computing.jpg" onerror="this.src='https://placehold.co/600x400/111/f89820?text=Cloud'" alt="Cloud">
                     </div>
-                    <h3>Power BI Internship</h3>
-                    <p>Learn to analyze, visualize, and present data like a pro with Power BI. Master dashboards in just a few weeks.</p>
-                    <a href="https://forms.gle/3VzjHGNCtsCpx6RU9" target="_blank" class="btn-glass-nav" style="text-align:center;">Apply Now</a>
+                    <h3>Cloud Computing with AWS</h3>
+                    <p>Gain hands-on experience in managing cloud infrastructure, deploying instances, and handling AWS services.</p>
+                    <a href="https://forms.gle/3VzjHGNCtsCpx6RU9" target="_blank" class="btn-glass-nav" style="text-align:center;">Apply for Internship</a>
                 </div>
-
 
                 <div class="tilt-card">
-                    <div class="intern-img">
-                        <img src="images/dsa.jpg" onerror="this.src='https://placehold.co/600x400/111/f89820?text=Java'" alt="Java">
+                    <div class="course-img">
+                        <img src="images/BI.png" onerror="this.src='https://placehold.co/600x400/111/f89820?text=PowerBI'" alt="PowerBI">
                     </div>
-                    <h3>Data Structures & Algorithms (DSA) Internship</h3>
-                    <p>Master problem solving.</p>
-                    <a href="https://forms.gle/3VzjHGNCtsCpx6RU9" target="_blank" class="btn-glass-nav" style="text-align:center;">Apply Now</a>
+                    <h3>Power BI Data Analytics</h3>
+                    <p>Analyze real datasets and build professional interactive dashboards for business intelligence operations.</p>
+                    <a href="https://forms.gle/3VzjHGNCtsCpx6RU9" target="_blank" class="btn-glass-nav" style="text-align:center;">Apply for Internship</a>
                 </div>
-
 
                 <div class="tilt-card">
-                    <div class="intern-img">
-                        <img src="images/flutter.jpg" onerror="this.src='https://placehold.co/600x400/111/f89820?text=Java'" alt="Java">
+                    <div class="course-img">
+                        <img src="images/dsa.jpg" onerror="this.src='https://placehold.co/600x400/111/f89820?text=DSA'" alt="DSA">
                     </div>
-                    <h3>Mobile App Development (Flutter) Internship</h3>
-                    <p>Cross‑platform mobile apps.</p>
-                    <a href="https://forms.gle/3VzjHGNCtsCpx6RU9" target="_blank" class="btn-glass-nav" style="text-align:center;">Apply Now</a>
+                    <h3>Data Structures & Algorithms</h3>
+                    <p>Enhance your problem-solving skills and prepare for top tech interviews through intensive algorithmic tasks.</p>
+                    <a href="https://forms.gle/3VzjHGNCtsCpx6RU9" target="_blank" class="btn-glass-nav" style="text-align:center;">Apply for Internship</a>
                 </div>
 
+                <div class="tilt-card">
+                    <div class="course-img">
+                        <img src="images/flutter.jpg" onerror="this.src='https://placehold.co/600x400/111/f89820?text=Flutter'" alt="Flutter">
+                    </div>
+                    <h3>Mobile App Dev (Flutter)</h3>
+                    <p>Develop, test, and deploy cross-platform mobile applications in an industrial team environment.</p>
+                    <a href="https://forms.gle/3VzjHGNCtsCpx6RU9" target="_blank" class="btn-glass-nav" style="text-align:center;">Apply for Internship</a>
+                </div>
                 
                 <div class="tilt-card">
-                    <div class="intern-img">
-                        <img src="images/data-analyst.jpg" onerror="this.src='https://placehold.co/600x400/111/f89820?text=Java'" alt="Java">
+                    <div class="course-img">
+                        <img src="images/data-analyst.jpg" onerror="this.src='https://placehold.co/600x400/111/f89820?text=Data+Analyst'" alt="Data Analyst">
                     </div>
                     <h3>Data Analyst Internship</h3>
-                    <p>Become a data analyst with skills in SQL, Excel, visualization tools, and statistical analysis..</p>
-                    <a href="https://forms.gle/3VzjHGNCtsCpx6RU9" target="_blank" class="btn-glass-nav" style="text-align:center;">Apply Now</a>
+                    <p>Work directly with SQL, Excel, and statistical analysis tools on active business scenarios.</p>
+                    <a href="https://forms.gle/3VzjHGNCtsCpx6RU9" target="_blank" class="btn-glass-nav" style="text-align:center;">Apply for Internship</a>
                 </div>
 
-
                 <div class="tilt-card">
-                    <div class="intern-img">
+                    <div class="course-img">
                         <img src="images/machine-learning.jpg" onerror="this.src='https://placehold.co/600x400/111/bf5af2?text=AI+&+ML'" alt="AI">
                     </div>
-                    <h3>Machine Learning & AI Internship</h3>
-                    <p>Dive into Neural Networks, Python, and Predictive Modeling with real datasets.</p>
-                    <a href="https://forms.gle/3VzjHGNCtsCpx6RU9" target="_blank" class="btn-glass-nav" style="text-align:center;">Apply Now</a>
+                    <h3>Machine Learning & AI</h3>
+                    <p>Work on predictive models and neural networks using live datasets and Python AI frameworks.</p>
+                    <a href="https://forms.gle/3VzjHGNCtsCpx6RU9" target="_blank" class="btn-glass-nav" style="text-align:center;">Apply for Internship</a>
                 </div>
 
                 <div class="tilt-card">
-                    <div class="intern-img">
+                    <div class="course-img">
                         <img src="images/data-science.jpg" onerror="this.src='https://placehold.co/600x400/111/ff2d55?text=Data+Science'" alt="Data">
                     </div>
-                    <h3>Data Science Internship</h3>
-                    <p>Unlock insights with Statistics, Visualization & ML algorithms.</p>
-                    <a href="https://forms.gle/3VzjHGNCtsCpx6RU9" target="_blank" class="btn-glass-nav" style="text-align:center;">Apply Now</a>
+                    <h3>Data Science</h3>
+                    <p>Unlock insights with advanced Statistics, Data Visualization, and Machine Learning algorithms.</p>
+                    <a href="https://forms.gle/3VzjHGNCtsCpx6RU9" target="_blank" class="btn-glass-nav" style="text-align:center;">Apply for Internship</a>
                 </div>
 
                 <div class="tilt-card">
-                    <div class="intern-img">
+                    <div class="course-img">
                         <img src="images/python-programming.jpg" onerror="this.src='https://placehold.co/600x400/111/FFB800?text=Python'" alt="Python">
                     </div>
-                    <h3>Python Programming Internship</h3>
-                    <p>From basics to automation. The most versatile language for beginners.</p>
-                    <a href="https://forms.gle/3VzjHGNCtsCpx6RU9" target="_blank" class="btn-glass-nav" style="text-align:center;">Apply Now</a>
+                    <h3>Python Programming</h3>
+                    <p>Implement automation scripts, build backend logic, and work on comprehensive Python projects.</p>
+                    <a href="https://forms.gle/3VzjHGNCtsCpx6RU9" target="_blank" class="btn-glass-nav" style="text-align:center;">Apply for Internship</a>
                 </div>
 
                 <div class="tilt-card">
-                    <div class="intern-img">
+                    <div class="course-img">
                         <img src="images/java-programming.jpg" onerror="this.src='https://placehold.co/600x400/111/f89820?text=Java'" alt="Java">
                     </div>
-                    <h3>Java Programming Internship</h3>
-                    <p>Master OOPs and build robust enterprise applications.</p>
-                    <a href="https://forms.gle/3VzjHGNCtsCpx6RU9" target="_blank" class="btn-glass-nav" style="text-align:center;">Apply Now</a>
+                    <h3>Java Programming</h3>
+                    <p>Master OOPs concepts by developing robust enterprise-level software applications.</p>
+                    <a href="https://forms.gle/3VzjHGNCtsCpx6RU9" target="_blank" class="btn-glass-nav" style="text-align:center;">Apply for Internship</a>
                 </div>
-
                 
                 <div class="tilt-card">
-                    <div class="intern-img">
+                    <div class="course-img">
                         <img src="images/web-development.jpg" onerror="this.src='https://placehold.co/600x400/111/E34F26?text=Web+Dev'" alt="Web">
                     </div>
-                    <h3>Web Development Internship</h3>
-                    <p>HTML5, CSS3, JS. The building blocks of the internet.</p>
-                    <a href="https://forms.gle/3VzjHGNCtsCpx6RU9" target="_blank" class="btn-glass-nav" style="text-align:center;">Apply Now</a>
+                    <h3>Frontend Web Development</h3>
+                    <p>Design responsive UI/UX using HTML5, CSS3, and JavaScript on active client mockups.</p>
+                    <a href="https://forms.gle/3VzjHGNCtsCpx6RU9" target="_blank" class="btn-glass-nav" style="text-align:center;">Apply for Internship</a>
                 </div>
             </div>
         </section>
@@ -941,8 +936,8 @@
                             <span style="font-size:0.9rem; color:var(--text-muted);">Google Reviews</span>
                         </div>
                     </div>
-                    <p style="color:var(--text-muted); margin-bottom:30px;">Don't take our word for it. See what our community says.</p>
-
+                    <p style="color:var(--text-muted); margin-bottom:30px;">See what our past interns have to say about their internship experience.</p>
+                    
                     <div class="tilt-card" style="margin-bottom:20px;">
                         <div style="display:flex; justify-content:space-between; margin-bottom:10px;">
                             <h4 style="margin:0; color:var(--text-main);">Satya sai Tamanara</h4>
@@ -964,7 +959,7 @@
 
                 <div id="games">
                      <h2>Fun <span class="hero-gradient-text">Zone</span></h2>
-                     <p style="color:var(--text-muted); margin-bottom:30px;">Take a break from coding.</p>
+                     <p style="color:var(--text-muted); margin-bottom:30px;">Take a quick break from coding.</p>
                      <div style="display:grid; grid-template-columns: 1fr 1fr; gap:20px;">
                         <div class="tilt-card" style="text-align:center; cursor:pointer;" onclick="openGame('ttt')">
                             <i class="fas fa-times" style="font-size:2.5rem; margin-bottom:10px; color:var(--accent-blue);"></i>
@@ -987,36 +982,31 @@
             <div class="section-header">
                 <h2>Frequently Asked <span class="hero-gradient-text">Questions</span></h2>
             </div>
-
+            
             <div class="faq-wrapper">
                 <div class="faq-item">
-                    <div class="faq-question">What is the duration of the internship? <i class="fas fa-chevron-down"></i></div>
-                    <div class="faq-answer"><p>Most internships are 4-12 weeks long, designed to be self-paced with weekly live doubt sessions to ensure flexibility and thorough learning.</p></div>
+                    <div class="faq-question">What is the duration of the internships? <i class="fas fa-chevron-down"></i></div>
+                    <div class="faq-answer"><p>Most internship programs are 4-12 weeks long, featuring flexible project submission deadlines and weekly live mentorship sessions.</p></div>
                 </div>
-
+                
                 <div class="faq-item">
-                    <div class="faq-question">Can I change my internship domain after enrollment? <i class="fas fa-chevron-down"></i></div>
-                    <div class="faq-answer"><p>Yes, we understand preferences change. You can request a domain switch within the first week of enrollment by contacting our support team.</p></div>
+                    <div class="faq-question">Can I change my domain after enrollment? <i class="fas fa-chevron-down"></i></div>
+                    <div class="faq-answer"><p>Yes, we understand technical interests evolve. You can request an internship domain switch within the first week of starting.</p></div>
                 </div>
-
+                
                 <div class="faq-item">
-                    <div class="faq-question">How many projects will I get? <i class="fas fa-chevron-down"></i></div>
-                    <div class="faq-answer"><p>Our curriculum focuses on hands-on learning. You will work on at least 2 minor projects and 1 major industry-grade capstone project during the internship.</p></div>
+                    <div class="faq-question">How many projects will I work on? <i class="fas fa-chevron-down"></i></div>
+                    <div class="faq-answer"><p>Our internships focus strictly on hands-on work. You will deliver at least 2 minor projects and 1 major industry-grade capstone project.</p></div>
                 </div>
-
+                
                 <div class="faq-item">
-                    <div class="faq-question">Are the internships suitable for beginners? <i class="fas fa-chevron-down"></i></div>
-                    <div class="faq-answer"><p>Absolutely! We start from the very basics and gradually guide you to advanced concepts. No prior coding experience is mandatory for beginner tracks.</p></div>
+                    <div class="faq-question">Are the internship programs suitable for beginners? <i class="fas fa-chevron-down"></i></div>
+                    <div class="faq-answer"><p>Absolutely! We provide introductory resources that guide you from the basics before assigning major project tasks.</p></div>
                 </div>
-
+                
                 <div class="faq-item">
-                    <div class="faq-question">What kind of projects will I work on? <i class="fas fa-chevron-down"></i></div>
-                    <div class="faq-answer"><p>You will build real-world applications relevant to your field, such as e-commerce websites, AI prediction models, or data analytics dashboards.</p></div>
-                </div>
-
-                <div class="faq-item">
-                    <div class="faq-question">Do you provide certificates upon completion? <i class="fas fa-chevron-down"></i></div>
-                    <div class="faq-answer"><p>Yes, upon successful completion, you receive an AICTE & MSME recognized certificate that is verifiable and adds significant value to your resume.</p></div>
+                    <div class="faq-question">What kind of tasks will I be given? <i class="fas fa-chevron-down"></i></div>
+                    <div class="faq-answer"><p>You will build real-world applications relevant to your domain, such as backend architectures, ML prediction models, or data analytics dashboards.</p></div>
                 </div>
             </div>
         </section>
@@ -1026,12 +1016,12 @@
                 <div class="contact-header">
                     <h2>Contact Us</h2>
                 </div>
-
+                
                 <div class="contact-wrapper">
                     <div class="contact-info-side">
                         <span class="contact-label">Email</span>
                         <a href="mailto:contact@axcentra.in" class="contact-value">contact@axcentra.in</a>
-
+                        
                         <span class="contact-label">Phone</span>
                         <a href="tel:+917024276449" class="contact-value">+91 7024276449</a>
                     </div>
@@ -1061,8 +1051,8 @@
                         <img src="images/logo.jpg" alt="Logo" style="width:40px; height:40px; border-radius:50%; border: 2px solid var(--card-border); box-shadow: 0 4px 10px rgba(0,0,0,0.1); object-fit: cover;">
                         Axcentra
                     </a>
-                    <p>MSME-registered tech internship provider dedicated to bridging the gap between education and industry requirements.</p>
-
+                    <p>MSME-registered internship startup dedicated to bridging the gap between academic education and industry expectations.</p>
+                    
                     <div class="social-circle-links">
                         <a href="https://www.facebook.com/share/1GULjPb634/?mibextid=wwXIfr" target="_blank" class="social-circle"><i class="fab fa-facebook-f"></i></a>
                         <a href="https://x.com/Code_Crafterss" target="_blank" class="social-circle"><i class="fab fa-twitter"></i></a>
@@ -1086,19 +1076,19 @@
                     <h3>Contact Info</h3>
                     <ul class="footer-list">
                         <li>
-                            <i class="fas fa-map-marker-alt" style="color:var(--accent-blue); width:20px;"></i>
+                            <i class="fas fa-map-marker-alt" style="color:var(--accent-blue); width:20px;"></i> 
                             Kolkata, India
                         </li>
                         <li>
-                            <i class="fas fa-envelope" style="color:var(--accent-blue); width:20px;"></i>
+                            <i class="fas fa-envelope" style="color:var(--accent-blue); width:20px;"></i> 
                             contact@axcentra.in
                         </li>
                         <li>
-                            <i class="fas fa-phone-alt" style="color:var(--accent-blue); width:20px;"></i>
+                            <i class="fas fa-phone-alt" style="color:var(--accent-blue); width:20px;"></i> 
                             +91 7024276449
                         </li>
                         <li>
-                            <i class="far fa-clock" style="color:var(--accent-blue); width:20px;"></i>
+                            <i class="far fa-clock" style="color:var(--accent-blue); width:20px;"></i> 
                             Mon - Fri: 9:00 AM - 6:00 PM
                         </li>
                     </ul>
@@ -1106,7 +1096,7 @@
             </div>
 
             <div class="footer-bottom-bar">
-                <span>© 2025 Axcentra | AICTE Approved | MSME Reg: UDYAM-WB-14-0202932 | Head: Harpinder Singh</span>
+                <span>© 2026 Axcentra | AICTE Approved | MSME Reg: UDYAM-WB-14-0202932 | Head: Harpinder Singh</span>
                 <div>
                     <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a>
                 </div>
@@ -1130,7 +1120,7 @@
             if(window.scrollY > 50) header.classList.add('scrolled');
             else header.classList.remove('scrolled');
         });
-
+ 
         const words = ["Web Development", "Data Science", "Machine Learning", "Cloud Computing"];
         let i = 0, j = 0, isDeleting = false;
         const typeEl = document.getElementById("typingText");
@@ -1149,7 +1139,7 @@
             setTimeout(type, isDeleting ? 80 : 150);
         }
         document.addEventListener("DOMContentLoaded", () => setTimeout(type, 1000));
-
+        
         const themeBtns = [document.getElementById('themeBtn'), document.getElementById('mobileThemeBtn')];
         const htmlEl = document.documentElement;
         const savedTheme = localStorage.getItem('theme') || 'dark';
@@ -1173,7 +1163,7 @@
         const menuBtn = document.getElementById('menuBtn');
         const mobileMenu = document.getElementById('mobileMenu');
         const closeMenu = document.getElementById('closeMenu');
-
+        
         function toggleMenu() { mobileMenu.classList.toggle('active'); }
         menuBtn.onclick = toggleMenu;
         closeMenu.onclick = toggleMenu;
@@ -1190,7 +1180,7 @@
                 card.style.transform = `perspective(1000px) rotateX(0) rotateY(0) scale(1)`;
             });
         });
-
+        
         const faqs = document.querySelectorAll('.faq-item');
         faqs.forEach(faq => {
             faq.addEventListener('click', () => {
@@ -1200,12 +1190,12 @@
                 faq.classList.toggle('active');
             });
         });
-
+ 
         const gameModal = document.getElementById('gameModal');
         const gameBody = document.getElementById('gameBody');
         const gameTitle = document.getElementById('gameTitle');
         document.getElementById('closeGame').onclick = () => gameModal.classList.remove('open');
-
+        
         window.openGame = function(type) {
             gameModal.classList.add('open');
             if(type === 'ttt') startTTT();
