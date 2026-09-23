@@ -1,1267 +1,1094 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
-
+<html lang="en" class="scroll-smooth">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>Axcentra — Live Projects & Industrial Internships</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Annotation & Data Labeling Services | Axcentra</title>
+    <meta name="description" content="Axcentra provides scalable human image annotation and computer vision data labeling services for AI startups and enterprise machine learning teams. Project capacity: 5-50+ annotators.">
     
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <style>
-       
-        :root {
-            --bg-color: #050505;
-            --bg-grid: rgba(255, 255, 255, 0.02);
-             
-            --card-bg: rgba(255, 255, 255, 0.03); 
-            --card-border: rgba(255, 255, 255, 0.08);
-            --card-hover: rgba(255, 255, 255, 0.07);
-            --card-blur: blur(16px);
-            
-            --nav-bg: rgba(5, 5, 5, 0.3);
-            --nav-border: rgba(255, 255, 255, 0.05);
-            
-            --text-main: #ffffff;
-            --text-muted: #a1a1aa;
-            
-            --accent-blue: #3b82f6;
-            --accent-purple: #8b5cf6;
-            --accent-cyan: #06b6d4;
-            --accent-gradient: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
-            
-            --radius-xl: 24px;
-            --radius-pill: 100px;
-            --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.5);
-            
-            --font-head: 'Outfit', sans-serif;
-            --font-body: 'Inter', sans-serif;
-            
-            --contact-input-bg: rgba(255, 255, 255, 0.05);
-            --contact-input-border: rgba(255, 255, 255, 0.1);
-            --contact-btn-bg: #ffffff;
-            --contact-btn-text: #000000;
-        }
-
-        [data-theme="light"] {
-            --bg-color: #f0f4f8;
-            --bg-grid: rgba(0, 0, 0, 0.03);
-            --card-bg: rgba(255, 255, 255, 0.6);
-            --card-border: rgba(255, 255, 255, 0.4);
-            --card-hover: rgba(255, 255, 255, 0.8);
-            --nav-bg: rgba(255, 255, 255, 0.5);
-            --nav-border: rgba(255, 255, 255, 0.3);
-            --text-main: #0f172a;
-            --text-muted: #475569;
-            --contact-input-bg: rgba(255, 255, 255, 0.6);
-            --contact-input-border: rgba(0,0,0,0.1);
-            --contact-btn-bg: #111111;
-            --contact-btn-text: #ffffff;
-        }
-
-        * { box-sizing: border-box; margin: 0; padding: 0; outline: none; -webkit-tap-highlight-color: transparent; }
-        
-        html, body { 
-            width: 100%;
-            overflow-x: hidden; 
-            scroll-behavior: smooth; 
-        }
-
-        body {
-            font-family: var(--font-body);
-            background-color: var(--bg-color);
-            background-image: 
-                linear-gradient(var(--bg-grid) 1px, transparent 1px),
-                linear-gradient(90deg, var(--bg-grid) 1px, transparent 1px);
-            background-size: 50px 50px;
-            color: var(--text-main);
-            transition: background-color 0.3s ease, color 0.3s ease;
-        }
-
-        .liquid-bg {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            z-index: -1; overflow: hidden; pointer-events: none;
-        }
-        .blob {
-            position: absolute; border-radius: 50%;
-            filter: blur(80px); opacity: 0.5;
-            animation: float 15s infinite ease-in-out alternate;
-        }
-        .blob-1 { width: 600px; height: 600px; background: var(--accent-blue); top: -20%; left: -10%; }
-        .blob-2 { width: 500px; height: 500px; background: var(--accent-purple); bottom: -10%; right: -10%; animation-duration: 20s; }
-
-        @keyframes float {
-            0% { transform: translate(0, 0) rotate(0deg); }
-            100% { transform: translate(50px, 80px) rotate(10deg); }
-        }
-
-        .wrap { width: 92%; max-width: 1280px; margin: 0 auto; }
-        a { text-decoration: none; color: inherit; transition: 0.3s; }
-
-        header {
-            position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
-            padding: 20px 0; transition: 0.3s;
-        }
-        header.scrolled { padding: 10px 0; }
-
-        .island-nav {
-            background: var(--nav-bg);
-            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-            border: 1px solid var(--nav-border);
-            border-radius: var(--radius-pill);
-            padding: 10px 24px;
-            display: flex; align-items: center; justify-content: space-between;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-            width: 100%;
-        }
-        
-        .brand { 
-            display: flex; align-items: center; gap: 12px; 
-            font-family: var(--font-head); font-weight: 700; font-size: 1.2rem; 
-            color: var(--text-main); letter-spacing: -0.5px;
-            white-space: nowrap;
-        }
-        
-        .brand img { 
-            width: 40px; height: 40px; 
-            border-radius: 50%;
-            border: 2px solid var(--card-border);
-            object-fit: cover;
-        }
-
-        .nav-links { display: flex; gap: 25px; }
-        .nav-links a { 
-            font-size: 0.95rem; font-weight: 500; color: var(--text-muted); 
-            position: relative;
-        }
-        .nav-links a:hover, .nav-links a.active { color: var(--text-main); }
-        .nav-links a::after {
-            content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px;
-            background: var(--accent-blue); transition: 0.3s;
-        }
-        .nav-links a:hover::after { width: 100%; }
-
-        .btn-ios {
-            background: var(--text-main); color: var(--bg-color); 
-            font-weight: 600; font-size: 0.9rem;
-            padding: 10px 24px; border-radius: var(--radius-pill);
-            border: none; cursor: pointer; transition: 0.3s;
-            display: inline-flex; align-items: center; gap: 8px;
-            font-family: var(--font-head); justify-content: center;
-        }
-        .btn-ios:hover { 
-            transform: translateY(-2px); 
-            box-shadow: 0 0 20px rgba(123, 97, 255, 0.4); 
-        }
-
-        /* PRIMARY CTA BUTTON */
-        .btn-gradient {
-            background: var(--accent-gradient); 
-            color: #ffffff;
-            font-weight: 600; font-size: 0.95rem;
-            padding: 16px 32px; border-radius: var(--radius-pill);
-            border: none; cursor: pointer; transition: 0.3s;
-            display: inline-flex; align-items: center; gap: 8px;
-            font-family: var(--font-head); justify-content: center;
-            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
-        }
-        .btn-gradient:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(139, 92, 246, 0.6);
-        }
-        
-        .btn-glass-nav {
-            background: rgba(255, 255, 255, 0.05); color: var(--text-main); 
-            border: 1px solid var(--card-border);
-            padding: 10px 24px; border-radius: var(--radius-pill); cursor: pointer; 
-            font-size: 0.9rem; font-weight: 600; font-family: var(--font-head);
-            transition: 0.3s;
-        }
-        .btn-glass-nav:hover { 
-            background: rgba(255, 255, 255, 0.1); 
-            border-color: var(--accent-blue);
-            box-shadow: 0 0 15px rgba(59, 130, 246, 0.3);
-        }
-
-        /* SECONDARY CTA BUTTON */
-        .btn-free-hero {
-            background: rgba(255, 255, 255, 0.08);
-            color: var(--text-main);
-            border: 1px solid var(--accent-cyan);
-            padding: 16px 32px; 
-            border-radius: var(--radius-pill);
-            cursor: pointer; 
-            font-size: 0.95rem; 
-            font-weight: 600; 
-            font-family: var(--font-head);
-            display: inline-flex; align-items: center; gap: 10px;
-            transition: 0.3s;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 0 15px rgba(6, 182, 212, 0.1);
-        }
-
-        .btn-free-hero:hover {
-            background: rgba(6, 182, 212, 0.15);
-            box-shadow: 0 0 25px rgba(6, 182, 212, 0.4); 
-            transform: translateY(-2px);
-            border-color: #fff;
-        }
-
-        [data-theme="light"] .btn-free-hero {
-            background: #ffffff;
-            border: 2px solid var(--accent-cyan);
-            color: #000000;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-        [data-theme="light"] .btn-free-hero:hover {
-            background: var(--accent-cyan);
-            color: #ffffff;
-        }
-        [data-theme="light"] .btn-free-hero i {
-            color: var(--accent-cyan);
-        }
-        [data-theme="light"] .btn-free-hero:hover i {
-            color: #ffffff;
-        }
-
-        .theme-toggle {
-            background: transparent; border: none; color: var(--text-main);
-            font-size: 1.2rem; cursor: pointer; width: 40px; height: 40px;
-            display: flex; align-items: center; justify-content: center;
-            border-radius: 50%; transition: 0.3s;
-        }
-        .theme-toggle:hover { background: rgba(255,255,255,0.1); color: var(--accent-blue); }
-
-        .hamburger { 
-            display: none; background: none; border: none; 
-            color: var(--text-main); font-size: 1.5rem; 
-            cursor: pointer; padding: 5px; line-height: 1; margin-left: 10px;
-        }
-
-        section { padding: 100px 0; position: relative; }
-        
-        .hero { 
-            padding-top: 140px; min-height: 100vh; 
-            display: flex; align-items: center;
-        }
-        .hero-grid {
-            display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 40px;
-            align-items: center; width: 100%;
-        }
-        .hero-content { text-align: left; }
-        .hero-badge {
-            display: inline-flex; align-items: center; gap: 8px;
-            padding: 8px 16px; border: 1px solid var(--card-border); border-radius: 50px; 
-            font-size: 0.85rem; margin-bottom: 25px; 
-            background: rgba(59, 130, 246, 0.1); color: var(--accent-cyan); font-weight: 600;
-            backdrop-filter: blur(5px);
-        }
-        .hero-badge i { font-size: 0.7rem; }
-
-        .hero h1 {
-            font-family: var(--font-head);
-            font-size: clamp(3rem, 5vw, 4.5rem); font-weight: 800; line-height: 1.1; margin-bottom: 25px;
-            letter-spacing: -1px;
-            text-shadow: 0 0 40px rgba(59, 130, 246, 0.2);
-            min-height: 2.4em; 
-        }
-        .hero-gradient-text {
-            background: var(--accent-gradient);
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-        }
-        .typewriter {
-            color: var(--accent-blue); border-right: 4px solid var(--accent-purple);
-            padding-right: 5px; animation: blink 0.8s infinite;
-        }
-        @keyframes blink { 50% { border-color: transparent; } }
-
-        .hero p {
-            color: var(--text-muted); font-size: 1.15rem; max-width: 90%; margin-bottom: 40px; line-height: 1.7;
-        }
-        .hero-btns { display: flex; gap: 15px; flex-wrap: wrap; }
-
-        .hero-visual { 
-            position: relative; height: 500px; display: flex; 
-            align-items: center; justify-content: center; 
-            perspective: 1000px;
-        }
-        .cube-wrapper {
-            width: 200px; height: 200px; position: relative;
-            transform-style: preserve-3d;
-            animation: rotateCube 15s infinite linear;
-        }
-        .cube-face {
-            position: absolute; width: 200px; height: 200px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(139, 92, 246, 0.3);
-            display: flex; align-items: center; justify-content: center;
-            font-size: 5rem; color: #fff;
-            box-shadow: 0 0 30px rgba(139, 92, 246, 0.1) inset;
-            backdrop-filter: blur(5px);
-            backface-visibility: visible;
-        }
-        .fa-react { color: #61DAFB; }
-        .fa-python { color: #FFD43B; }
-        .fa-js { color: #F7DF1E; }
-        .fa-database { color: #F29111; }
-
-        .front  { transform: rotateY(0deg) translateZ(100px); }
-        .back   { transform: rotateY(180deg) translateZ(100px); }
-        .right  { transform: rotateY(90deg) translateZ(100px); }
-        .left   { transform: rotateY(-90deg) translateZ(100px); }
-        .top    { transform: rotateX(90deg) translateZ(100px); }
-        .bottom { transform: rotateX(-90deg) translateZ(100px); }
-
-        @keyframes rotateCube {
-            from { transform: rotateX(-15deg) rotateY(0deg); }
-            to { transform: rotateX(-15deg) rotateY(360deg); }
-        }
-
-        .orbit-ring {
-            position: absolute; width: 400px; height: 400px;
-            border: 1px dashed rgba(255,255,255,0.1); border-radius: 50%;
-            transform: rotateX(75deg);
-            animation: spinRing 20s linear infinite;
-        }
-        .planet {
-            position: absolute; top: 50%; left: 50%;
-            width: 50px; height: 50px; margin: -25px;
-            background: var(--card-bg); 
-            border: 1px solid var(--card-border);
-            backdrop-filter: blur(10px);
-            border-radius: 50%; display: grid; place-items: center;
-            font-size: 1.2rem; box-shadow: 0 0 15px rgba(0,0,0,0.5);
-            animation: counterSpin 20s linear infinite;
-        }
-        .p1 { transform: translateX(200px); }
-        .p2 { transform: translateX(-200px); }
-        
-        @keyframes spinRing { 100% { transform: rotateX(75deg) rotateZ(360deg); } }
-        @keyframes counterSpin { 100% { transform: rotateZ(-360deg); } }
-
-        .float-card {
-            position: absolute; padding: 12px 20px;
-            background: var(--card-bg); backdrop-filter: blur(15px);
-            border: 1px solid var(--card-border);
-            border-left: 3px solid var(--accent-blue);
-            border-radius: 8px;
-            font-size: 0.9rem; font-weight: 600;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
-            z-index: 10;
-        }
-        .fc1 { top: 10%; right: 10%; animation: floatBadge 6s ease-in-out infinite; }
-        .fc2 { bottom: 15%; left: 0%; animation: floatBadge 7s ease-in-out infinite 1s; border-color: var(--accent-purple); }
-
-        @keyframes floatBadge {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-15px); }
-        }
-
-        .section-header { text-align: center; margin-bottom: 60px; }
-        .section-header h2 { font-family: var(--font-head); font-size: 2.5rem; margin-bottom: 15px; }
-        .section-header span { color: var(--accent-blue); }
-        .section-header p { color: var(--text-muted); max-width: 600px; margin: 0 auto; }
-
-        .bento-grid {
-            display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 30px;
-        }
-        
-        .tilt-card {
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: var(--radius-xl);
-            padding: 24px;
-            backdrop-filter: var(--card-blur);
-            -webkit-backdrop-filter: var(--card-blur);
-            transition: transform 0.2s ease-out, border-color 0.3s, background 0.3s, box-shadow 0.3s;
-            display: flex; flex-direction: column;
-            overflow: hidden; height: 100%;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-        }
-        .tilt-card:hover { 
-            border-color: rgba(255,255,255,0.2); 
-            background: var(--card-hover);
-            box-shadow: 0 20px 40px -10px rgba(0,0,0,0.6), 0 0 20px rgba(59, 130, 246, 0.2);
-        }
-        
-        .course-img {
-            height: 200px; border-radius: 16px; overflow: hidden; margin-bottom: 20px;
-            position: relative;
-        }
-        .course-img img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
-        .tilt-card:hover .course-img img { transform: scale(1.05); }
-        
-        .tag {
-            position: absolute; top: 10px; right: 10px;
-            background: rgba(0,0,0,0.7); color: #fff; 
-            padding: 4px 10px; border-radius: 4px; font-size: 0.75rem; font-weight: 600;
-            backdrop-filter: blur(4px);
-        }
-        .tilt-card h3 { font-family: var(--font-head); font-size: 1.4rem; margin-bottom: 10px; color: var(--text-main); }
-        .tilt-card p { color: var(--text-muted); line-height: 1.5; font-size: 0.95rem; flex-grow: 1; margin-bottom: 20px; }
-
-        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
-        .stats-row { display: flex; gap: 30px; margin: 30px 0; }
-        .stat h4 { font-size: 2.5rem; font-weight: 800; color: var(--accent-blue); font-family: var(--font-head); margin-bottom: 5px; }
-        .stat p { font-size: 0.9rem; color: var(--text-muted); }
-
-        .faq-wrapper { max-width: 900px; margin: 0 auto; }
-        
-        .faq-item {
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            backdrop-filter: var(--card-blur);
-            border-radius: 16px;
-            margin-bottom: 15px;
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-        .faq-item:hover { border-color: var(--accent-blue); background: var(--card-hover); }
-        
-        .faq-question {
-            padding: 20px 24px; display: flex; justify-content: space-between;
-            align-items: center; cursor: pointer;
-            font-size: 1.1rem; font-weight: 600; color: var(--text-main);
-            font-family: var(--font-head);
-        }
-        .faq-question i {
-            font-size: 0.9rem; transition: transform 0.3s ease; color: var(--text-muted);
-        }
-        .faq-answer {
-            max-height: 0; overflow: hidden;
-            transition: max-height 0.3s cubic-bezier(0, 1, 0, 1);
-        }
-        .faq-answer p {
-            padding: 0 24px 24px 24px; color: var(--text-muted);
-            line-height: 1.6; margin: 0; font-size: 0.95rem;
-        }
-        
-        .faq-item.active {
-            background: rgba(59, 130, 246, 0.05);
-            border-color: var(--accent-blue);
-        }
-        .faq-item.active .faq-question i { transform: rotate(180deg); color: var(--accent-blue); }
-        .faq-item.active .faq-answer { max-height: 500px; }
-
-        .contact-container {
-            background: var(--card-bg);
-            backdrop-filter: blur(25px);
-            border: 1px solid var(--accent-blue);  
-            border-radius: 20px;
-            padding: 50px;
-            max-width: 900px;
-            margin: 0 auto;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
-            position: relative; overflow: hidden;
-        }
-        .contact-container::before {
-            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent);
-        }
-
-        .contact-header { text-align: center; margin-bottom: 50px; }
-        .contact-header h2 { font-size: 2rem; font-weight: 700; color: var(--text-main); }
-        .contact-wrapper { display: grid; grid-template-columns: 1fr 1.5fr; gap: 60px; }
-        .contact-label { display: block; font-size: 1rem; color: var(--text-muted); margin-bottom: 8px; }
-        .contact-value { font-size: 1.1rem; color: var(--text-main); font-weight: 500; text-decoration: none; display: block; margin-bottom: 30px; }
-        .form-group { margin-bottom: 20px; }
-        
-        .form-input {
-            width: 100%; padding: 14px 18px; border-radius: 8px;
-            border: 1px solid var(--contact-input-border);
-            background: var(--contact-input-bg); color: var(--text-main);
-            font-family: inherit; font-size: 0.95rem; transition: 0.3s;
-        }
-        .form-input:focus { 
-            border-color: var(--accent-blue); 
-            background: rgba(59, 130, 246, 0.05);
-            box-shadow: 0 0 10px rgba(59,130,246,0.1);
-        }
-        .submit-btn {
-            width: 100%; padding: 14px 20px; border-radius: 50px;
-            background: var(--contact-btn-bg); color: var(--contact-btn-text);
-            border: none; font-weight: 700; font-size: 1rem;
-            cursor: pointer; transition: 0.3s;
-        }
-        .submit-btn:hover { opacity: 0.9; transform: translateY(-1px); box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
-
-        @media (max-width: 1024px) {
-            .hero-grid { grid-template-columns: 1fr; text-align: center; }
-            .hero-content { display: flex; flex-direction: column; align-items: center; order: 2; }
-            .hero h1 { font-size: 3rem; }
-            .hero-visual { height: 400px; width: 100%; order: 1; margin-bottom: 30px; }
-            .about-grid { grid-template-columns: 1fr; }
-        }
-
-        @media (max-width: 768px) {
-            .island-nav { padding: 12px 16px; width: 100%; margin: 0; }
-            .nav-links, .nav-desktop-btns { display: none !important; }
-            .hamburger { display: block; }
-            
-            .hero { padding-top: 110px; }
-             
-            .hero h1 { 
-                font-size: 2.5rem; 
-                min-height: 5em;  
-            }
-
-            .bento-grid { grid-template-columns: 1fr; }
-            
-            .contact-wrapper { grid-template-columns: 1fr; gap: 40px; }
-            .footer-row { grid-template-columns: 1fr; gap: 40px; }
-            .footer-bottom-bar { text-align: center; }
-            .social-circle-links { justify-content: center; }
-            .footer-brand { display:flex; flex-direction:column; align-items:center; text-align:center; }
-            .footer-col { text-align:center; }
-            .footer-list li { justify-content: center; }
-            
-            .wrap { width: 90%; }
-            .contact-container { padding: 30px 20px; }
-            section { padding: 60px 0; }
-
-            .tilt-card .fa-chalkboard-teacher, 
-            .tilt-card .fa-laptop-code {
-                flex-shrink: 0;  
-            }
-            .about-grid .tilt-card > div > div {
-                padding: 20px !important; 
-            }
-            
-            .section-header h2, .about-grid h2 {
-                font-size: 2rem !important;  
-                word-wrap: break-word;
-            }
-            
-            .stats-row {
-                flex-wrap: wrap;  
-                gap: 20px;
-                justify-content: center;  
-            }
-            .stat {
-                text-align: center;
-                min-width: 120px;  
-            }
-
-            p { max-width: 100%; }
-            img { max-width: 100%; }
-        }
-
-        .mobile-menu {
-            position: fixed; inset: 0; 
-            width: 100%; height: 100%; 
-            background: rgba(5,5,5,0.98); 
-            backdrop-filter: blur(25px); 
-            z-index: 1500;
-            display: flex; flex-direction: column; align-items: center; justify-content: center;
-            gap: 20px; 
-            transform: translateX(100%); 
-            transition: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            overflow-y: auto; padding: 20px;
-            color: #ffffff; 
-        }
-        .mobile-menu.active { transform: translateX(0); }
-        
-        .mobile-link { 
-            font-size: 1.4rem; 
-            font-weight: 600; 
-            color: #ffffff !important; 
-            font-family: var(--font-head); 
-            padding: 8px;
-            transition: color 0.3s;
-        }
-        .mobile-link:hover { color: var(--accent-blue) !important; text-shadow: 0 0 10px rgba(59,130,246,0.5); }
-        
-        .mobile-menu #closeMenu { color: #ffffff !important; }
-
-        .mobile-menu-actions {
-            display: flex; flex-direction: column; gap: 15px; width: 100%; max-width: 300px;
-            align-items: center; margin-top: 10px;
-        }
-        .mobile-menu-actions .btn-ios { width: 100%; justify-content: center; }
-        .mobile-menu-actions .theme-toggle {
-            color: #ffffff !important;
-            border: 1px solid rgba(255,255,255,0.2);
-        }
- 
-        .footer-main { 
-            margin-top: 100px; padding: 70px 0 30px; 
-            background: var(--card-bg); 
-            border-top: 1px solid var(--accent-blue);
-            backdrop-filter: blur(25px); 
-            font-size: 0.95rem; 
-        }
-        .footer-row { display: grid; grid-template-columns: 1.5fr 1fr 1.2fr; gap: 50px; margin-bottom: 50px; }
-        .footer-brand p { color: var(--text-muted); line-height: 1.6; margin: 20px 0; max-width: 320px; }
-        .social-circle-links { display: flex; gap: 12px; }
-        .social-circle {
-            width: 40px; height: 40px; background: rgba(255, 255, 255, 0.05); border-radius: 50%;
-            display: flex; align-items: center; justify-content: center; border: 1px solid var(--card-border);
-            color: var(--text-muted); transition: 0.3s;
-        }
-        .social-circle:hover { background: var(--accent-blue); color: #fff; border-color: var(--accent-blue); box-shadow: 0 0 10px var(--accent-blue); }
-        .footer-col h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 25px; color: var(--text-main); font-family: var(--font-head); }
-        .footer-list { list-style: none; padding: 0; }
-        .footer-list li { margin-bottom: 15px; color: var(--text-muted); display: flex; align-items: center; gap: 10px; }
-        .footer-list.bullets li::before { content: "•"; color: var(--text-main); font-size: 1.2rem; line-height: 0; }
-        .footer-list a { color: var(--text-muted); transition: 0.2s; }
-        .footer-list a:hover { color: var(--accent-blue); padding-left: 5px; text-shadow: 0 0 5px rgba(59,130,246,0.5); }
-        .footer-bottom-bar {
-            border-top: 1px solid var(--card-border); padding-top: 30px; text-align: center;
-            color: var(--text-muted); 
-            font-size: 0.85rem; display: flex; flex-direction: column; gap: 10px;
-        }
-        .footer-bottom-bar a {
-            color: var(--text-main);
-            text-decoration: none;
-            transition: 0.3s;
-        }
-        .footer-bottom-bar a:hover {
-            color: var(--accent-blue);
-            text-decoration: underline;
-        }
-
-        .modal-overlay {
-            position: fixed; inset: 0; background: rgba(0,0,0,0.8); z-index: 2000;
-            display: flex; align-items: center; justify-content: center;
-            backdrop-filter: blur(8px);
-            opacity: 0; pointer-events: none; transition: 0.3s;
-        }
-        .modal-overlay.open { opacity: 1; pointer-events: auto; }
-        
-        .modal-window {
-            background: rgba(20, 20, 20, 0.7); 
-            backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px);
-            border: 1px solid rgba(255, 255, 255, 0.1); 
-            padding: 30px; border-radius: 20px; width: 90%; max-width: 450px;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.5), 0 0 30px rgba(59, 130, 246, 0.15); 
-            position: relative;
-            color: #ffffff !important;
-        }
-        .modal-window h3 { color: #ffffff !important; }
-        .modal-window #closeGame { color: #ffffff !important; opacity: 0.8; }
-    </style>
-</head>
-
-<body>
-
-    <div class="liquid-bg">
-        <div class="blob blob-1"></div>
-        <div class="blob blob-2"></div>
-    </div>
-
-    <header id="header">
-        <div class="wrap">
-            <div class="island-nav">
-                <a href="#" class="brand">
-                    <img src="images/logo.jpg" alt="A" onerror="this.src='https://placehold.co/40/2997ff/fff?text=A'">
-                    Axcentra
-                </a>
-
-                <nav class="nav-links">
-                    <a href="#home">Home</a>
-                    <a href="#about">About</a>
-                    <a href="#internships">Internships</a>
-                    <a href="#reviews">Reviews</a>
-                    <a href="#contact">Contact</a>
-                </nav>
-
-                <div class="nav-desktop-btns" style="display:flex; gap:12px; align-items:center;">
-                    <button class="theme-toggle" id="themeBtn"><i class="fas fa-moon"></i></button>
-                    <a href="https://axcentra.site" target="_blank" class="btn-ios">Login <i class="fas fa-arrow-right"></i></a>
-                </div>
-                
-                <button class="hamburger" id="menuBtn"><i class="fas fa-bars"></i></button>
-            </div>
-        </div>
-    </header>
-
-    <div class="mobile-menu" id="mobileMenu">
-        <button id="closeMenu" style="position:absolute; top:30px; right:30px; background:none; border:none; font-size:1.8rem;"><i class="fas fa-times"></i></button>
-        
-        <a href="#home" class="mobile-link">Home</a>
-        <a href="#about" class="mobile-link">About Us</a>
-        <a href="#internships" class="mobile-link">Internship Domains</a>
-        <a href="#reviews" class="mobile-link">Student Reviews</a>
-        <a href="#contact" class="mobile-link">Contact</a>
-        
-        <div style="height: 1px; width: 60px; background: rgba(255,255,255,0.2); margin: 10px 0;"></div>
-        
-        <div class="mobile-menu-actions">
-            <a href="https://axcentra.site" target="_blank" class="btn-ios">
-                Login <i class="fas fa-arrow-right"></i>
-            </a>
-
-            <button class="theme-toggle" id="mobileThemeBtn" style="font-size:1.5rem; background:rgba(255,255,255,0.05); width:50px; height:50px; border-radius:50%; margin-top:10px;">
-                <i class="fas fa-moon"></i>
-            </button>
-        </div>
-    </div>
-
-    <main>
-        <section id="home" class="hero wrap">
-            <div class="hero-grid">
-                <div class="hero-content">
-                    <div class="hero-badge"><i class="fas fa-award"></i> AICTE & MSME Approved</div>
-                    <h1>Launch Your Career in <span class="hero-gradient-text type-wrap"><span class="typewriter" id="typingText"></span></span><br>Today.</h1>
-                    <p>Unlock your potential with hands-on internships, live projects, and mentorship from industry experts. The smartest way to become job-ready.</p>
-                    
-                    <div class="hero-btns">
-                        <a href="#internships" class="btn-free-hero">
-                            <i class="fas fa-briefcase" style="color:var(--accent-cyan);"></i> Explore Domains
-                        </a>
-
-                        <a href="https://forms.gle/3VzjHGNCtsCpx6RU9" class="btn-gradient" target="_blank">
-                            <i class="fas fa-paper-plane"></i> Apply for Internship
-                        </a>
-                    </div>
-                </div>
-
-                <div class="hero-visual">
-                    <div class="orbit-ring">
-                        <div class="planet p1"><i class="fab fa-aws" style="color:#FF9900"></i></div>
-                        <div class="planet p2"><i class="fas fa-code-branch" style="color:#F05032"></i></div>
-                    </div>
-                    
-                    <div class="cube-wrapper">
-                        <div class="cube">
-                            <div class="cube-face front"><i class="fab fa-react"></i></div>
-                            <div class="cube-face back"><i class="fab fa-python"></i></div>
-                            <div class="cube-face right"><i class="fas fa-database"></i></div>
-                            <div class="cube-face left"><i class="fab fa-js"></i></div>
-                            <div class="cube-face top"><i class="fab fa-html5" style="color:#E34F26"></i></div>
-                            <div class="cube-face bottom"><i class="fas fa-brain" style="color:#d63384"></i></div>
-                        </div>
-                    </div>
-
-                    <div class="float-card fc1">
-                        <div style="font-size:0.8rem; color:var(--text-muted);">Interns Guided</div>
-                        <div style="font-size:1.2rem; color:var(--text-main);">4,000+</div>
-                    </div>
-                    <div class="float-card fc2">
-                        <div style="display:flex; align-items:center; gap:5px;">
-                            <i class="fas fa-star" style="color:#FFB800"></i> 4.9/5
-                        </div>
-                        <div style="font-size:0.8rem; color:var(--text-muted);">Google Rating</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="about" class="wrap">
-            <div class="about-grid">
-                <div class="tilt-card" style="padding:0; border:none; background:transparent; box-shadow:none;">
-                     <div style="background: linear-gradient(45deg, var(--accent-blue), var(--accent-purple)); border-radius: 20px; padding: 2px;">
-                        <div style="background: rgba(15, 15, 25, 0.85); backdrop-filter:blur(20px); border-radius: 18px; padding: 30px; height: 100%;">
-                            <h3 style="margin-bottom: 20px; color:#fff;">Why Axcentra?</h3>
-                            <div style="display:flex; flex-direction:column; gap:20px;">
-                                <div style="display:flex; gap:15px; align-items:center;">
-                                    <div style="width:50px; height:50px; background:rgba(59,130,246,0.1); border-radius:12px; display:flex; align-items:center; justify-content:center; color:var(--accent-blue); font-size:1.2rem;"><i class="fas fa-chalkboard-teacher"></i></div>
-                                    <div>
-                                        <h4 style="font-size:1.1rem; color:#fff; margin:0;">Industrial Internships</h4>
-                                        <p style="font-size:0.9rem; color:rgba(255,255,255,0.7); margin:0;">Our internship programs are structured with direct input from industry experts.</p>
-                                    </div>
-                                </div>
-                                <div style="display:flex; gap:15px; align-items:center;">
-                                    <div style="width:50px; height:50px; background:rgba(139,92,246,0.1); border-radius:12px; display:flex; align-items:center; justify-content:center; color:var(--accent-purple); font-size:1.2rem;"><i class="fas fa-laptop-code"></i></div>
-                                    <div>
-                                        <h4 style="font-size:1.1rem; color:#fff; margin:0;">Live Projects</h4>
-                                        <p style="font-size:0.9rem; color:rgba(255,255,255,0.7); margin:0;">Build real industrial applications, not just basic tutorials.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                     </div>
-                </div>
-                <div>
-                    <h2 style="font-family: var(--font-head); font-size: 2.5rem; margin-bottom: 20px;">Bridging the Gap Between <span class="hero-gradient-text">Degree & Industry</span></h2>
-                    <p style="color:var(--text-muted); line-height: 1.6; margin-bottom: 30px;">Axcentra is a premier technology internship provider. Our practical, project-first approach ensures that students gain real-world industrial experience that makes them job-ready immediately after graduation.</p>
-                    
-                    <div class="stats-row">
-                        <div class="stat">
-                            <h4>4500+</h4>
-                            <p>Internships Completed</p>
-                        </div>
-                     
-                        <div class="stat">
-                            <h4>Top</h4>
-                            <p>Industry Mentors</p>
-                        </div>
-                           <div class="stat">
-                            <h4>50+</h4>
-                            <p>Live Projects</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="internships" class="wrap">
-            <div class="section-header">
-                <h2>Internship <span class="hero-gradient-text">Domains</span></h2>
-                <p>Hands-on internship programs designed to transform students into job-ready professionals.</p>
-            </div>
-            
-            <div class="bento-grid">
-                <div class="tilt-card">
-                    <div class="course-img">
-                        <img src="images/full-stack.jpg" onerror="this.src='https://placehold.co/600x400/111/2997ff?text=Full+Stack'" alt="MERN">
-                        <div class="tag">Trending</div>
-                    </div>
-                    <h3>Full Stack Web Dev</h3>
-                    <p>Work on live MERN stack (MongoDB, Express, React, Node) projects and gain complete deployment experience.</p>
-                    <a href="https://forms.gle/3VzjHGNCtsCpx6RU9" target="_blank" class="btn-glass-nav" style="text-align:center;">Apply for Internship</a>
-                </div>
-
-                <div class="tilt-card">
-                    <div class="course-img">
-                        <img src="images/c-programming.jpg" onerror="this.src='https://placehold.co/600x400/111/f89820?text=C'" alt="C Programming">
-                    </div>
-                    <h3>C Programming</h3>
-                    <p>Build a strong logic foundation by working on core C programming assignments and mini-projects.</p>
-                    <a href="https://forms.gle/3VzjHGNCtsCpx6RU9" target="_blank" class="btn-glass-nav" style="text-align:center;">Apply for Internship</a>
-                </div>
-
-                <div class="tilt-card">
-                    <div class="course-img">
-                        <img src="images/cpp-programming.jpg" onerror="this.src='https://placehold.co/600x400/111/f89820?text=C++'" alt="C++">
-                    </div>
-                    <h3>C++ Programming</h3>
-                    <p>Develop object-oriented solutions and high-performance applications through hands-on industrial tasks.</p>
-                    <a href="https://forms.gle/3VzjHGNCtsCpx6RU9" target="_blank" class="btn-glass-nav" style="text-align:center;">Apply for Internship</a>
-                </div>
-
-                <div class="tilt-card">
-                    <div class="course-img">
-                        <img src="images/cloud-computing.jpg" onerror="this.src='https://placehold.co/600x400/111/f89820?text=Cloud'" alt="Cloud">
-                    </div>
-                    <h3>Cloud Computing with AWS</h3>
-                    <p>Gain hands-on experience in managing cloud infrastructure, deploying instances, and handling AWS services.</p>
-                    <a href="https://forms.gle/3VzjHGNCtsCpx6RU9" target="_blank" class="btn-glass-nav" style="text-align:center;">Apply for Internship</a>
-                </div>
-
-                <div class="tilt-card">
-                    <div class="course-img">
-                        <img src="images/BI.png" onerror="this.src='https://placehold.co/600x400/111/f89820?text=PowerBI'" alt="PowerBI">
-                    </div>
-                    <h3>Power BI Data Analytics</h3>
-                    <p>Analyze real datasets and build professional interactive dashboards for business intelligence operations.</p>
-                    <a href="https://forms.gle/3VzjHGNCtsCpx6RU9" target="_blank" class="btn-glass-nav" style="text-align:center;">Apply for Internship</a>
-                </div>
-
-                <div class="tilt-card">
-                    <div class="course-img">
-                        <img src="images/dsa.jpg" onerror="this.src='https://placehold.co/600x400/111/f89820?text=DSA'" alt="DSA">
-                    </div>
-                    <h3>Data Structures & Algorithms</h3>
-                    <p>Enhance your problem-solving skills and prepare for top tech interviews through intensive algorithmic tasks.</p>
-                    <a href="https://forms.gle/3VzjHGNCtsCpx6RU9" target="_blank" class="btn-glass-nav" style="text-align:center;">Apply for Internship</a>
-                </div>
-
-                <div class="tilt-card">
-                    <div class="course-img">
-                        <img src="images/flutter.jpg" onerror="this.src='https://placehold.co/600x400/111/f89820?text=Flutter'" alt="Flutter">
-                    </div>
-                    <h3>Mobile App Dev (Flutter)</h3>
-                    <p>Develop, test, and deploy cross-platform mobile applications in an industrial team environment.</p>
-                    <a href="https://forms.gle/3VzjHGNCtsCpx6RU9" target="_blank" class="btn-glass-nav" style="text-align:center;">Apply for Internship</a>
-                </div>
-                
-                <div class="tilt-card">
-                    <div class="course-img">
-                        <img src="images/data-analyst.jpg" onerror="this.src='https://placehold.co/600x400/111/f89820?text=Data+Analyst'" alt="Data Analyst">
-                    </div>
-                    <h3>Data Analyst Internship</h3>
-                    <p>Work directly with SQL, Excel, and statistical analysis tools on active business scenarios.</p>
-                    <a href="https://forms.gle/3VzjHGNCtsCpx6RU9" target="_blank" class="btn-glass-nav" style="text-align:center;">Apply for Internship</a>
-                </div>
-
-                <div class="tilt-card">
-                    <div class="course-img">
-                        <img src="images/machine-learning.jpg" onerror="this.src='https://placehold.co/600x400/111/bf5af2?text=AI+&+ML'" alt="AI">
-                    </div>
-                    <h3>Machine Learning & AI</h3>
-                    <p>Work on predictive models and neural networks using live datasets and Python AI frameworks.</p>
-                    <a href="https://forms.gle/3VzjHGNCtsCpx6RU9" target="_blank" class="btn-glass-nav" style="text-align:center;">Apply for Internship</a>
-                </div>
-
-                <div class="tilt-card">
-                    <div class="course-img">
-                        <img src="images/data-science.jpg" onerror="this.src='https://placehold.co/600x400/111/ff2d55?text=Data+Science'" alt="Data">
-                    </div>
-                    <h3>Data Science</h3>
-                    <p>Unlock insights with advanced Statistics, Data Visualization, and Machine Learning algorithms.</p>
-                    <a href="https://forms.gle/3VzjHGNCtsCpx6RU9" target="_blank" class="btn-glass-nav" style="text-align:center;">Apply for Internship</a>
-                </div>
-
-                <div class="tilt-card">
-                    <div class="course-img">
-                        <img src="images/python-programming.jpg" onerror="this.src='https://placehold.co/600x400/111/FFB800?text=Python'" alt="Python">
-                    </div>
-                    <h3>Python Programming</h3>
-                    <p>Implement automation scripts, build backend logic, and work on comprehensive Python projects.</p>
-                    <a href="https://forms.gle/3VzjHGNCtsCpx6RU9" target="_blank" class="btn-glass-nav" style="text-align:center;">Apply for Internship</a>
-                </div>
-
-                <div class="tilt-card">
-                    <div class="course-img">
-                        <img src="images/java-programming.jpg" onerror="this.src='https://placehold.co/600x400/111/f89820?text=Java'" alt="Java">
-                    </div>
-                    <h3>Java Programming</h3>
-                    <p>Master OOPs concepts by developing robust enterprise-level software applications.</p>
-                    <a href="https://forms.gle/3VzjHGNCtsCpx6RU9" target="_blank" class="btn-glass-nav" style="text-align:center;">Apply for Internship</a>
-                </div>
-                
-                <div class="tilt-card">
-                    <div class="course-img">
-                        <img src="images/web-development.jpg" onerror="this.src='https://placehold.co/600x400/111/E34F26?text=Web+Dev'" alt="Web">
-                    </div>
-                    <h3>Frontend Web Development</h3>
-                    <p>Design responsive UI/UX using HTML5, CSS3, and JavaScript on active client mockups.</p>
-                    <a href="https://forms.gle/3VzjHGNCtsCpx6RU9" target="_blank" class="btn-glass-nav" style="text-align:center;">Apply for Internship</a>
-                </div>
-            </div>
-        </section>
-
-        <section id="reviews" class="wrap">
-            <div class="about-grid" style="align-items:start;">
-                <div>
-                    <h2>Intern <span class="hero-gradient-text">Feedback</span></h2>
-                    <div style="display:flex; align-items:center; gap:15px; margin-bottom:20px;">
-                        <span style="font-size:3rem; font-weight:800; color:var(--text-main);">4.9</span>
-                        <div>
-                            <div style="color:#FFB800"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                            <span style="font-size:0.9rem; color:var(--text-muted);">Google Reviews</span>
-                        </div>
-                    </div>
-                    <p style="color:var(--text-muted); margin-bottom:30px;">See what our past interns have to say about their internship experience.</p>
-                    
-                    <div class="tilt-card" style="margin-bottom:20px;">
-                        <div style="display:flex; justify-content:space-between; margin-bottom:10px;">
-                            <h4 style="margin:0; color:var(--text-main);">Satya sai Tamanara</h4>
-                            <i class="fab fa-google" style="color:var(--text-muted);"></i>
-                        </div>
-                        <p style="font-style:italic;">"Helpful and practical internship experience. Enhanced my understanding of DSA concepts. Grateful to Axcentra!"</p>
-                    </div>
-                    <div class="tilt-card">
-                        <div style="display:flex; justify-content:space-between; margin-bottom:10px;">
-                            <h4 style="margin:0; color:var(--text-main);">Darlapudi Venkata</h4>
-                            <i class="fab fa-google" style="color:var(--text-muted);"></i>
-                        </div>
-                        <p style="font-style:italic;">"Axcentra internship helps me to learn python in due time and gain a new skill set."</p>
-                    </div>
-                    <div style="margin-top:20px;">
-                        <a href="https://g.page/r/CUJizYmjiWXAEBE/review" target="_blank" class="btn-ios">Write a Review</a>
-                    </div>
-                </div>
-
-                <div id="games">
-                     <h2>Fun <span class="hero-gradient-text">Zone</span></h2>
-                     <p style="color:var(--text-muted); margin-bottom:30px;">Take a quick break from coding.</p>
-                     <div style="display:grid; grid-template-columns: 1fr 1fr; gap:20px;">
-                        <div class="tilt-card" style="text-align:center; cursor:pointer;" onclick="openGame('ttt')">
-                            <i class="fas fa-times" style="font-size:2.5rem; margin-bottom:10px; color:var(--accent-blue);"></i>
-                            <h3>Tic Tac Toe</h3>
-                        </div>
-                        <div class="tilt-card" style="text-align:center; cursor:pointer;" onclick="openGame('rps')">
-                            <i class="fas fa-hand-scissors" style="font-size:2.5rem; margin-bottom:10px; color:var(--accent-purple);"></i>
-                            <h3>RPS</h3>
-                        </div>
-                        <div class="tilt-card" style="text-align:center; cursor:pointer; grid-column: span 2;" onclick="openGame('memory')">
-                            <i class="fas fa-brain" style="font-size:2.5rem; margin-bottom:10px; color:var(--accent-cyan);"></i>
-                            <h3>Memory Game</h3>
-                        </div>
-                     </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="faq" class="wrap">
-            <div class="section-header">
-                <h2>Frequently Asked <span class="hero-gradient-text">Questions</span></h2>
-            </div>
-            
-            <div class="faq-wrapper">
-                <div class="faq-item">
-                    <div class="faq-question">What is the duration of the internships? <i class="fas fa-chevron-down"></i></div>
-                    <div class="faq-answer"><p>Most internship programs are 4-12 weeks long, featuring flexible project submission deadlines and weekly live mentorship sessions.</p></div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">Can I change my domain after enrollment? <i class="fas fa-chevron-down"></i></div>
-                    <div class="faq-answer"><p>Yes, we understand technical interests evolve. You can request an internship domain switch within the first week of starting.</p></div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">How many projects will I work on? <i class="fas fa-chevron-down"></i></div>
-                    <div class="faq-answer"><p>Our internships focus strictly on hands-on work. You will deliver at least 2 minor projects and 1 major industry-grade capstone project.</p></div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">Are the internship programs suitable for beginners? <i class="fas fa-chevron-down"></i></div>
-                    <div class="faq-answer"><p>Absolutely! We provide introductory resources that guide you from the basics before assigning major project tasks.</p></div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">What kind of tasks will I be given? <i class="fas fa-chevron-down"></i></div>
-                    <div class="faq-answer"><p>You will build real-world applications relevant to your domain, such as backend architectures, ML prediction models, or data analytics dashboards.</p></div>
-                </div>
-            </div>
-        </section>
-
-        <section id="contact" class="wrap" style="margin-bottom:50px;">
-            <div class="contact-container">
-                <div class="contact-header">
-                    <h2>Contact Us</h2>
-                </div>
-                
-                <div class="contact-wrapper">
-                    <div class="contact-info-side">
-                        <span class="contact-label">Email</span>
-                        <a href="mailto:contact@axcentra.in" class="contact-value">contact@axcentra.in</a>
-                        
-                        <span class="contact-label">Phone</span>
-                        <a href="tel:+918100276449" class="contact-value">+91 8100276449</a>
-                    </div>
-
-                    <form onsubmit="alert('Message Sent!'); return false;">
-                        <div class="form-group">
-                            <input type="text" placeholder="Name" class="form-input" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="email" placeholder="Email" class="form-input" required>
-                        </div>
-                        <div class="form-group">
-                            <textarea placeholder="Your Message" rows="5" class="form-input" required></textarea>
-                        </div>
-                        <button type="submit" class="submit-btn">Send Message</button>
-                    </form>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer class="footer-main">
-        <div class="wrap">
-            <div class="footer-row">
-                <div class="footer-brand">
-                    <a href="#" class="brand" style="font-size: 1.4rem;">
-                        <img src="images/logo.jpg" alt="Logo" style="width:40px; height:40px; border-radius:50%; border: 2px solid var(--card-border); box-shadow: 0 4px 10px rgba(0,0,0,0.1); object-fit: cover;">
-                        Axcentra
-                    </a>
-                    <p>MSME-registered internship startup dedicated to bridging the gap between academic education and industry expectations.</p>
-                    
-                    <div class="social-circle-links">
-                        <a href="https://www.facebook.com/share/1GULjPb634/?mibextid=wwXIfr" target="_blank" class="social-circle"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://x.com/Code_Crafterss" target="_blank" class="social-circle"><i class="fab fa-twitter"></i></a>
-                        <a href="http://www.linkedin.com/in/axcentra-52383236b" target="_blank" class="social-circle"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="https://www.instagram.com/axcentra_/" target="_blank" class="social-circle"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-
-                <div class="footer-col">
-                    <h3>Quick Links</h3>
-                    <ul class="footer-list bullets">
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#internships">Internships</a></li>
-                        <li><a href="#reviews">Reviews</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-col">
-                    <h3>Contact Info</h3>
-                    <ul class="footer-list">
-                        <li>
-                            <i class="fas fa-map-marker-alt" style="color:var(--accent-blue); width:20px;"></i> 
-                            Kolkata, India
-                        </li>
-                        <li>
-                            <i class="fas fa-envelope" style="color:var(--accent-blue); width:20px;"></i> 
-                            contact@axcentra.in
-                        </li>
-                        <li>
-                            <i class="fas fa-phone-alt" style="color:var(--accent-blue); width:20px;"></i> 
-                            +91 8100276449
-                        </li>
-                        <li>
-                            <i class="far fa-clock" style="color:var(--accent-blue); width:20px;"></i> 
-                            Mon - Fri: 9:00 AM - 6:00 PM
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="footer-bottom-bar">
-                <span>© 2026 Axcentra | AICTE Approved | MSME Reg: UDYAM-WB-14-0202932 | Head: Harpinder Singh</span>
-                <div>
-                    <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <div class="modal-overlay" id="gameModal">
-        <div class="modal-window" style="text-align:center;">
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
-                <h3 id="gameTitle" style="color:var(--text-main); margin:0;">Game</h3>
-                <button id="closeGame" style="background:none; border:none; color:var(--text-muted); font-size:1.2rem; cursor:pointer;"><i class="fas fa-times"></i></button>
-            </div>
-            <div id="gameBody" style="min-height:250px; display:flex; flex-direction:column; align-items:center; justify-content:center;"></div>
-        </div>
-    </div>
-
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
     <script>
-        window.addEventListener('scroll', () => {
-            const header = document.getElementById('header');
-            if(window.scrollY > 50) header.classList.add('scrolled');
-            else header.classList.remove('scrolled');
-        });
- 
-        const words = ["Web Development", "Data Science", "Machine Learning", "Cloud Computing"];
-        let i = 0, j = 0, isDeleting = false;
-        const typeEl = document.getElementById("typingText");
-
-        function type() {
-            const currentWord = words[i];
-            if (isDeleting) {
-                typeEl.textContent = currentWord.substring(0, j-1);
-                j--;
-                if (j == 0) { isDeleting = false; i = (i + 1) % words.length; }
-            } else {
-                typeEl.textContent = currentWord.substring(0, j+1);
-                j++;
-                if (j == currentWord.length) { isDeleting = true; }
-            }
-            setTimeout(type, isDeleting ? 80 : 150);
-        }
-        document.addEventListener("DOMContentLoaded", () => setTimeout(type, 1000));
-        
-        const themeBtns = [document.getElementById('themeBtn'), document.getElementById('mobileThemeBtn')];
-        const htmlEl = document.documentElement;
-        const savedTheme = localStorage.getItem('theme') || 'dark';
-        htmlEl.setAttribute('data-theme', savedTheme);
-        updateIcons(savedTheme);
-
-        function toggleTheme() {
-            const current = htmlEl.getAttribute('data-theme');
-            const next = current === 'dark' ? 'light' : 'dark';
-            htmlEl.setAttribute('data-theme', next);
-            localStorage.setItem('theme', next);
-            updateIcons(next);
-        }
-        function updateIcons(theme) {
-            themeBtns.forEach(btn => {
-                if(btn) btn.innerHTML = theme === 'dark' ? '<i class="fas fa-moon"></i>' : '<i class="fas fa-sun"></i>';
-            });
-        }
-        themeBtns.forEach(btn => btn?.addEventListener('click', toggleTheme));
-
-        const menuBtn = document.getElementById('menuBtn');
-        const mobileMenu = document.getElementById('mobileMenu');
-        const closeMenu = document.getElementById('closeMenu');
-        
-        function toggleMenu() { mobileMenu.classList.toggle('active'); }
-        menuBtn.onclick = toggleMenu;
-        closeMenu.onclick = toggleMenu;
-        document.querySelectorAll('.mobile-link').forEach(l => l.onclick = () => mobileMenu.classList.remove('active'));
-
-        document.querySelectorAll('.tilt-card').forEach(card => {
-            card.addEventListener('mousemove', (e) => {
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                card.style.transform = `perspective(1000px) rotateX(${((y/rect.height)-0.5)*-5}deg) rotateY(${((x/rect.width)-0.5)*5}deg) scale(1.02)`;
-            });
-            card.addEventListener('mouseleave', () => {
-                card.style.transform = `perspective(1000px) rotateX(0) rotateY(0) scale(1)`;
-            });
-        });
-        
-        const faqs = document.querySelectorAll('.faq-item');
-        faqs.forEach(faq => {
-            faq.addEventListener('click', () => {
-                faqs.forEach(item => {
-                    if (item !== faq) item.classList.remove('active');
-                });
-                faq.classList.toggle('active');
-            });
-        });
- 
-        const gameModal = document.getElementById('gameModal');
-        const gameBody = document.getElementById('gameBody');
-        const gameTitle = document.getElementById('gameTitle');
-        document.getElementById('closeGame').onclick = () => gameModal.classList.remove('open');
-        
-        window.openGame = function(type) {
-            gameModal.classList.add('open');
-            if(type === 'ttt') startTTT();
-            if(type === 'rps') startRPS();
-            if(type === 'memory') startMemory();
-        }
-
-        function startTTT() {
-            gameTitle.innerText = "Tic-Tac-Toe";
-            let b = Array(9).fill(null), active=true;
-            const render = () => {
-                gameBody.innerHTML = `<div style="display:grid; grid-template-columns:repeat(3,1fr); gap:5px; margin-bottom:15px;">
-                    ${b.map((v,i)=>`<div onclick="clickTTT(${i})" style="width:60px;height:60px;background:rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;font-size:1.5rem;cursor:pointer;">${v||''}</div>`).join('')}
-                </div><div id="status" style="color:var(--text-muted)">Your Turn (X)</div><button class="btn-ios" style="margin-top:15px" onclick="startTTT()">Reset</button>`;
-            };
-            window.clickTTT = (i) => {
-                if(b[i] || !active) return;
-                b[i]='X'; render();
-                if(chkWin(b,'X')){ document.getElementById('status').innerText="You Win!"; active=false; return; }
-                if(!b.includes(null)){ document.getElementById('status').innerText="Draw!"; active=false; return; }
-                setTimeout(()=>{
-                    let empty = b.map((v,k)=>v?null:k).filter(v=>v!==null);
-                    if(empty.length) b[empty[Math.floor(Math.random()*empty.length)]] = 'O';
-                    render();
-                    if(chkWin(b,'O')) { document.getElementById('status').innerText="AI Wins!"; active=false; }
-                }, 400);
-            };
-            const chkWin = (b,p) => [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]].some(c=>b[c[0]]===p&&b[c[1]]===p&&b[c[2]]===p);
-            render();
-        }
-
-        function startRPS() {
-            gameTitle.innerText = "Rock Paper Scissors";
-            gameBody.innerHTML = `<div style="font-size:3rem; margin-bottom:20px;">🤜 🆚 🤛</div>
-            <div style="display:flex; gap:15px;">${['🪨','📄','✂️'].map(e=>`<div onclick="playRPS('${e}')" style="font-size:2.5rem;cursor:pointer;padding:10px;background:rgba(255,255,255,0.05);border-radius:10px;">${e}</div>`).join('')}</div>
-            <div id="rpsRes" style="margin-top:20px; color:var(--text-main); font-weight:bold;">Pick one!</div>`;
-            window.playRPS = (p) => {
-                const ai = ['🪨','📄','✂️'][Math.floor(Math.random()*3)];
-                let r = "Draw!";
-                if((p=='🪨'&&ai=='✂️')||(p=='📄'&&ai=='🪨')||(p=='✂️'&&ai=='📄')) r="You Win!";
-                else if(p!==ai) r="AI Wins!";
-                document.getElementById('rpsRes').innerHTML = `You: ${p} | AI: ${ai}<br>${r}`;
-            }
-        }
-
-        function startMemory() {
-            gameTitle.innerText = "Memory Challenge";
-            let icons = ['🍎','🍎','🍿','🍿','🐁','🐁','🌹','🌹'].sort(()=>Math.random()-0.5);
-            let open = [], matched = 0;
-            gameBody.innerHTML = `<div style="display:grid; grid-template-columns:repeat(4,1fr); gap:10px;">
-                ${icons.map((icon,i)=>`<div id="m${i}" onclick="flip(${i},'${icon}')" style="width:50px;height:50px;background:rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:1.5rem;border-radius:8px;">?</div>`).join('')}
-            </div><button class="btn-ios" style="margin-top:20px" onclick="startMemory()">Reset</button>`;
-            window.flip = (i,ic) => {
-                let el = document.getElementById('m'+i);
-                if(el.innerText!=='?' || open.length>=2) return;
-                el.innerText=ic; el.style.background='#3b82f6';
-                open.push({i,ic});
-                if(open.length===2) {
-                    if(open[0].ic===open[1].ic) { matched++; open=[]; if(matched===4) alert('You Win!'); }
-                    else setTimeout(()=>{ 
-                        open.forEach(x=>{ document.getElementById('m'+x.i).innerText='?'; document.getElementById('m'+x.i).style.background='rgba(255,255,255,0.1)'; }); 
-                        open=[]; 
-                    }, 800);
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            900: '#0c4a6e',
+                        },
+                        slate: {
+                            850: '#152033',
+                            900: '#0f172a',
+                        }
+                    }
                 }
             }
         }
     </script>
+    
+    <!-- Alpine.js -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <style>
+        /* Slider Input Styles */
+        .slider-input::-webkit-slider-thumb {
+            appearance: none;
+            width: 32px;
+            height: 32px;
+            background: transparent;
+            cursor: ew-resize;
+            border-radius: 50%;
+        }
+        .slider-input::-moz-range-thumb {
+            appearance: none;
+            width: 32px;
+            height: 32px;
+            background: transparent;
+            cursor: ew-resize;
+            border: none;
+            border-radius: 50%;
+        }
+
+        /* Computer Vision Annotations CSS */
+        .cv-layer {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+        
+        .bbox {
+            position: absolute;
+            border: 2px solid #22c55e; /* Green */
+            background-color: rgba(34, 197, 94, 0.15);
+            box-shadow: 0 0 0 1px rgba(0,0,0,0.1) inset;
+        }
+        
+        .bbox-label {
+            position: absolute;
+            top: -22px;
+            left: -2px;
+            background: #22c55e;
+            color: white;
+            font-size: 11px;
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+            font-weight: 600;
+            padding: 2px 6px;
+            border-radius: 2px 2px 0 0;
+            white-space: nowrap;
+            letter-spacing: 0.5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        /* Different Classes/Colors */
+        .bbox.person { border-color: #3b82f6; background-color: rgba(59, 130, 246, 0.15); }
+        .bbox.person .bbox-label { background: #3b82f6; }
+        
+        .bbox.sign { border-color: #a855f7; background-color: rgba(168, 85, 247, 0.15); }
+        .bbox.sign .bbox-label { background: #a855f7; }
+
+        .bbox.product { border-color: #ef4444; background-color: rgba(239, 68, 68, 0.15); }
+        .bbox.product .bbox-label { background: #ef4444; }
+
+        /* Keypoint Nodes */
+        .kp-node {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background-color: #ef4444;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 0 0 2px white;
+        }
+        
+        [x-cloak] { display: none !important; }
+    </style>
+</head>
+<body class="font-sans text-slate-800 bg-white antialiased" x-data="{ mobileMenuOpen: false }">
+
+    <header class="fixed w-full top-0 z-50 bg-white/60 backdrop-blur-md border-b border-slate-200/50 shadow-sm transition-all">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="#" class="flex items-center gap-2.5 group">
+                        <!-- LOCAL LOGO PLACEHOLDER FOR HEADER -->
+                        <img src="logo.png" alt="Axcentra Logo"  class="h-12 w-auto object-contain group-hover:scale-105 transition transform">
+                        <span class="font-extrabold text-2xl text-slate-900 tracking-tight">Axcentra</span>
+                    </a>
+                </div>
+
+                <!-- Desktop Nav -->
+                <nav class="hidden lg:flex space-x-8">
+                    <a href="#services" class="text-sm font-semibold text-slate-600 hover:text-brand-600 transition">Services</a>
+                    <a href="#quality" class="text-sm font-semibold text-slate-600 hover:text-brand-600 transition">Quality</a>
+                    <a href="#workflow" class="text-sm font-semibold text-slate-600 hover:text-brand-600 transition">Workflow</a>
+                    <a href="#portfolio" class="text-sm font-semibold text-slate-600 hover:text-brand-600 transition">Portfolio</a>
+                    <a href="#about" class="text-sm font-semibold text-slate-600 hover:text-brand-600 transition">About Us</a>
+                </nav>
+
+                <!-- Desktop CTAs -->
+                <div class="hidden lg:flex items-center space-x-4">
+                    <a href="#contact" class="text-sm font-semibold text-slate-700 hover:text-brand-600 transition px-4 py-2.5 border border-slate-300 rounded-lg hover:bg-slate-50 hover:border-slate-400">Request a Sample</a>
+                    <a href="#contact" class="text-sm font-semibold bg-brand-600 text-white px-5 py-2.5 rounded-lg hover:bg-brand-700 transition shadow-md hover:shadow-lg transform hover:-translate-y-0.5">Get a Quote</a>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="lg:hidden flex items-center">
+                    <button @click="mobileMenuOpen = !mobileMenuOpen" class="text-slate-600 hover:text-slate-900 p-2 focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path x-show="!mobileMenuOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                            <path x-show="mobileMenuOpen" x-cloak stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Nav -->
+        <div x-show="mobileMenuOpen" x-transition.opacity x-cloak class="lg:hidden bg-white border-b border-slate-200 shadow-xl absolute w-full">
+            <div class="px-4 pt-2 pb-6 space-y-1">
+                <a href="#services" @click="mobileMenuOpen = false" class="block px-3 py-3 text-base font-semibold text-slate-700 hover:bg-slate-50 hover:text-brand-600 rounded-md">Services</a>
+                <a href="#quality" @click="mobileMenuOpen = false" class="block px-3 py-3 text-base font-semibold text-slate-700 hover:bg-slate-50 hover:text-brand-600 rounded-md">Quality</a>
+                <a href="#workflow" @click="mobileMenuOpen = false" class="block px-3 py-3 text-base font-semibold text-slate-700 hover:bg-slate-50 hover:text-brand-600 rounded-md">Workflow</a>
+                <a href="#portfolio" @click="mobileMenuOpen = false" class="block px-3 py-3 text-base font-semibold text-slate-700 hover:bg-slate-50 hover:text-brand-600 rounded-md">Portfolio</a>
+                <a href="#about" @click="mobileMenuOpen = false" class="block px-3 py-3 text-base font-semibold text-slate-700 hover:bg-slate-50 hover:text-brand-600 rounded-md">About Us</a>
+                <div class="mt-4 pt-4 border-t border-slate-100 flex flex-col space-y-3">
+                    <a href="#contact" @click="mobileMenuOpen = false" class="text-center block px-4 py-3 border border-slate-300 rounded-lg text-slate-700 font-semibold shadow-sm">Request a Sample</a>
+                    <a href="#contact" @click="mobileMenuOpen = false" class="text-center block px-4 py-3 bg-brand-600 text-white rounded-lg font-semibold shadow-md">Get a Quote</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="pt-28 pb-16 lg:pt-36 lg:pb-24 overflow-hidden relative">
+        <div class="absolute inset-0 bg-slate-50 -z-10">
+            <!-- Subtle background pattern -->
+            <div class="absolute inset-0" style="background-image: radial-gradient(#cbd5e1 1px, transparent 1px); background-size: 32px 32px; opacity: 0.3;"></div>
+        </div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:grid lg:grid-cols-12 lg:gap-16 items-center">
+                
+                <!-- Hero Content -->
+                <div class="lg:col-span-6 text-left mb-12 lg:mb-0">
+                    <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-100 border border-brand-200 text-brand-700 text-xs font-bold tracking-wide uppercase mb-6 shadow-sm">
+                        <span class="w-2 h-2 rounded-full bg-brand-500 animate-pulse"></span>
+                        AI Data Annotation & Labeling
+                    </div>
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight leading-[1.1] mb-6">
+                        Accurate Image Annotation for <span class="text-brand-600 bg-clip-text">Smarter AI</span>
+                    </h1>
+                    <p class="text-lg text-slate-600 mb-8 max-w-2xl leading-relaxed font-medium">
+                        We provide scalable image annotation and data labeling services designed to help AI teams build, train, and improve computer vision systems with high-quality human-labeled datasets.
+                    </p>
+                    
+                    <div class="flex flex-col sm:flex-row gap-4 mb-10">
+                        <a href="#contact" class="inline-flex justify-center items-center px-6 py-3.5 border border-transparent text-base font-semibold rounded-lg shadow-lg shadow-brand-500/30 text-white bg-brand-600 hover:bg-brand-700 transition transform hover:-translate-y-0.5">
+                            Get a Quote
+                        </a>
+                        <a href="#contact" class="inline-flex justify-center items-center px-6 py-3.5 border border-slate-300 shadow-sm text-base font-semibold rounded-lg text-slate-700 bg-white hover:bg-slate-50 hover:border-slate-400 transition">
+                            Request a Sample
+                        </a>
+                    </div>
+                    
+                    <!-- Trust Points -->
+                    <div class="grid grid-cols-2 gap-y-4 gap-x-2 text-sm font-semibold text-slate-700">
+                        <div class="flex items-center gap-2">
+                            <svg class="w-5 h-5 text-green-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg>
+                            Human Annotated
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <svg class="w-5 h-5 text-green-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg>
+                            Quality Checked
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <svg class="w-5 h-5 text-green-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg>
+                            Scalable Workforce
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <svg class="w-5 h-5 text-green-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg>
+                            Bulk Project Support
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hero Visual (Real Image + CSS Annotation Overlay) -->
+                <div class="lg:col-span-6 relative">
+                    <!-- Added 'group' class here for hover effects -->
+                    <div class="bg-slate-900 rounded-2xl shadow-2xl p-2 border border-slate-800 relative overflow-hidden transform lg:rotate-1 hover:rotate-0 transition duration-500 group cursor-pointer">
+                        <!-- Toolbar mock -->
+                        <div class="flex items-center gap-2 mb-2 px-2 pb-2 border-b border-slate-800">
+                            <div class="w-3 h-3 rounded-full bg-slate-700"></div>
+                            <div class="w-3 h-3 rounded-full bg-slate-700"></div>
+                            <div class="w-3 h-3 rounded-full bg-slate-700"></div>
+                            <div class="ml-auto text-xs text-slate-400 font-mono flex items-center gap-2">
+                                <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                detection_model_v4.json
+                            </div>
+                        </div>
+                        
+                        <!-- Mock Image Area with Real Unsplash Image -->
+                        <div class="relative w-full aspect-[4/3] rounded-lg overflow-hidden bg-slate-950">
+                            <img src="https://images.unsplash.com/photo-1449824913935-59a10b8d2000?auto=format&fit=crop&q=80&w=1200" alt="Urban traffic dataset" class="w-full h-full object-cover opacity-90" />
+                            
+                            <!-- CSS Bounding Boxes Overlay - Hidden by default, visible on hover -->
+                            <div class="cv-layer opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                <!-- Main Car Center -->
+                                <div class="bbox" style="top: 55%; left: 35%; width: 30%; height: 28%;">
+                                    <div class="bbox-label">Vehicle 0.98</div>
+                                </div>
+                                <!-- Background Car Left -->
+                                <div class="bbox" style="top: 60%; left: 10%; width: 15%; height: 18%;">
+                                    <div class="bbox-label">Objects 0.91</div>
+                                </div>
+                                <!-- Background Car Right -->
+                                <div class="bbox" style="top: 60%; left: 80%; width: 18%; height: 20%;">
+                                    <div class="bbox-label">Vehicle 0.88</div>
+                                </div>
+                                <!-- Traffic Light -->
+                                <div class="bbox sign" style="top: 30%; left: 25%; width: 8%; height: 15%;">
+                                    <div class="bbox-label">Traffic Sign 0.95</div>
+                                </div>
+                            </div>
+                            
+                            <!-- Scanning line animation wrapper - Hidden by default, visible on hover -->
+                            <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 absolute inset-0 pointer-events-none">
+                                <div class="absolute top-0 left-0 w-full h-1 bg-brand-500 shadow-[0_0_12px_rgba(14,165,233,0.8)] opacity-60" style="animation: scan 3s infinite linear;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <style>
+        @keyframes scan {
+            0% { top: 0%; opacity: 0; }
+            10% { opacity: 0.6; }
+            90% { opacity: 0.6; }
+            100% { top: 100%; opacity: 0; }
+        }
+    </style>
+
+    <div class="bg-slate-900 border-y border-slate-800 py-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 divide-x divide-slate-700 text-center">
+                <div class="px-4">
+                    <div class="text-3xl font-extrabold text-white mb-2 tracking-tight">5–50+</div>
+                    <div class="text-sm font-semibold text-slate-400">Scalable Project Capacity</div>
+                </div>
+                <div class="px-4">
+                    <div class="text-3xl font-extrabold text-white mb-2 tracking-tight">Human</div>
+                    <div class="text-sm font-semibold text-slate-400">Annotation & Review</div>
+                </div>
+                <div class="px-4">
+                    <div class="text-3xl font-extrabold text-white mb-2 tracking-tight">QA</div>
+                    <div class="text-sm font-semibold text-slate-400">Quality-Controlled Workflow</div>
+                </div>
+                <div class="px-4">
+                    <div class="text-3xl font-extrabold text-white mb-2 tracking-tight">Bulk</div>
+                    <div class="text-sm font-semibold text-slate-400">Dataset Processing</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section id="services" class="py-24 bg-white relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl font-extrabold text-slate-900 tracking-tight sm:text-4xl mb-4">Image Annotation Services</h2>
+                <p class="text-lg text-slate-600 font-medium">Structured, accurate labeled data for computer vision and AI applications.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Bounding Box -->
+                <div class="bg-white border border-slate-200 rounded-2xl p-6 hover:shadow-xl hover:border-brand-300 transition duration-300 group">
+                    <div class="w-14 h-14 bg-brand-50 rounded-xl flex items-center justify-center mb-5 text-brand-600 group-hover:bg-brand-600 group-hover:text-white transition">
+                        <svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4h16v16H4z"></path></svg>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2">Bounding Box</h3>
+                    <p class="text-sm text-slate-600 mb-4 leading-relaxed">Precise rectangular annotations for object detection and localization.</p>
+                    <div class="text-xs font-semibold text-slate-500 bg-slate-50 p-2 rounded border border-slate-100">Cars • People • Products</div>
+                </div>
+
+              <!-- Image Labeling -->
+<div class="bg-white border border-slate-200 rounded-2xl p-6 hover:shadow-xl hover:border-brand-300 transition duration-300 group">
+    <div class="w-14 h-14 bg-brand-50 rounded-xl flex items-center justify-center mb-5 text-brand-600 group-hover:bg-brand-600 group-hover:text-white transition">
+        <svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5h16v14H4z"></path></svg>
+    </div>
+    <h3 class="text-lg font-bold text-slate-900 mb-2">Image Labeling</h3>
+    <p class="text-sm text-slate-600 leading-relaxed">Accurate labeling of objects and visual content in images based on project-specific requirements.</p>
+</div>
+
+                <!-- Document Annotation -->
+<div class="bg-white border border-slate-200 rounded-2xl p-6 hover:shadow-xl hover:border-brand-300 transition duration-300 group">
+    <div class="w-14 h-14 bg-brand-50 rounded-xl flex items-center justify-center mb-5 text-brand-600 group-hover:bg-brand-600 group-hover:text-white transition">
+        <svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 3h9l3 3v15H6zM14 3v4h4"></path></svg>
+    </div>
+    <h3 class="text-lg font-bold text-slate-900 mb-2">Document Annotation</h3>
+    <p class="text-sm text-slate-600 leading-relaxed">Accurate annotation and labeling of information within documents according to project requirements.</p>
+</div>
+
+             <!-- Text Annotation -->
+<div class="bg-white border border-slate-200 rounded-2xl p-6 hover:shadow-xl hover:border-brand-300 transition duration-300 group">
+    <div class="w-14 h-14 bg-brand-50 rounded-xl flex items-center justify-center mb-5 text-brand-600 group-hover:bg-brand-600 group-hover:text-white transition">
+        <svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h12M4 18h9"></path></svg>
+    </div>
+    <h3 class="text-lg font-bold text-slate-900 mb-2">Text Annotation</h3>
+    <p class="text-sm text-slate-600 leading-relaxed">Structured labeling of text and document content based on defined annotation guidelines.</p>
+</div>
+
+                <!-- Classification -->
+                <div class="bg-white border border-slate-200 rounded-2xl p-6 hover:shadow-xl hover:border-brand-300 transition duration-300 group">
+                    <div class="w-14 h-14 bg-brand-50 rounded-xl flex items-center justify-center mb-5 text-brand-600 group-hover:bg-brand-600 group-hover:text-white transition">
+                        <svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"></path></svg>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2">Image Classification</h3>
+                    <p class="text-sm text-slate-600 leading-relaxed">Categorizing whole images according to client-defined classes and taxonomy guidelines.</p>
+                </div>
+
+                <!-- Object Detection -->
+                <div class="bg-white border border-slate-200 rounded-2xl p-6 hover:shadow-xl hover:border-brand-300 transition duration-300 group">
+                    <div class="w-14 h-14 bg-brand-50 rounded-xl flex items-center justify-center mb-5 text-brand-600 group-hover:bg-brand-600 group-hover:text-white transition">
+                        <svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2">Object Detection</h3>
+                    <p class="text-sm text-slate-600 leading-relaxed">Identifying and localizing multiple complex objects within busy environmental scenes.</p>
+                </div>
+
+                <!-- Keypoint -->
+                <div class="bg-white border border-slate-200 rounded-2xl p-6 hover:shadow-xl hover:border-brand-300 transition duration-300 group">
+                    <div class="w-14 h-14 bg-brand-50 rounded-xl flex items-center justify-center mb-5 text-brand-600 group-hover:bg-brand-600 group-hover:text-white transition">
+                        <svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2">Keypoint Annotation</h3>
+                    <p class="text-sm text-slate-600 leading-relaxed">Point-based annotation for human pose, facial landmarks, and structural objects.</p>
+                </div>
+
+                <!-- Custom -->
+                <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 hover:shadow-xl transition duration-300 group">
+                    <div class="w-14 h-14 bg-slate-800 rounded-xl flex items-center justify-center mb-5 text-white">
+                        <svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">Custom Workflows</h3>
+                    <p class="text-sm text-slate-400 leading-relaxed">Customized annotation processes designed around your specific data, rules, and formats.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="workflow" class="py-24 bg-slate-50 border-y border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl font-extrabold text-slate-900 tracking-tight sm:text-4xl mb-4">See Our Annotation Workflow</h2>
+                <p class="text-lg text-slate-600 font-medium">Demonstration of high-quality object detection and labeling. Drag the slider to compare.</p>
+                <span class="inline-block mt-4 px-4 py-1.5 bg-brand-100 text-brand-800 text-xs font-bold uppercase tracking-wider rounded-md border border-brand-200">Sample / Demonstration Data</span>
+            </div>
+
+            <!-- Alpine.js Slider Component -->
+            <div class="max-w-4xl mx-auto relative rounded-2xl shadow-2xl overflow-hidden border-4 border-white bg-slate-900" 
+                 x-data="{ sliderPos: 50 }">
+                
+                <div class="relative w-full aspect-video select-none">
+                    
+                    <!-- Base Image (Original Image) -->
+                    <!-- Unsplash street view with cars and people -->
+                    <img src="1.png" alt="Original Unlabeled Image" class="absolute inset-0 w-full h-full object-cover pointer-events-none" />
+                    
+                    <!-- Top Layer (Annotated Image - Clipped based on sliderPos) -->
+                    <div class="absolute inset-0 w-full h-full pointer-events-none" 
+                         :style="`clip-path: polygon(0 0, ${sliderPos}% 0, ${sliderPos}% 100%, 0 100%)`">
+                        
+                        <!-- Same image, maybe slightly dimmed for contrast with boxes -->
+                        <img src="1.png" alt="Annotated Output" class="absolute inset-0 w-full h-full object-cover brightness-95" />
+                        
+                        <!-- CSS Bounding Boxes mapped to this specific image -->
+                        <div class="cv-layer">
+                            <!-- Left TukTuk/Car -->
+                            <div class="bbox" style="top: 40%; left: 10%; width: 26%; height: 35%;">
+                                <div class="bbox-label">Vehicle 0.96</div>
+                            </div>
+                            <!-- Middle Person -->
+                            <div class="bbox person" style="top: 40%; left: 45%; width: 10%; height: 37%;">
+                                <div class="bbox-label">Person 0.99</div>
+                            </div>
+                            <!-- Right Person -->
+                            <div class="bbox person" style="top: 42%; left: 62%; width: 10%; height: 36%;">
+                                <div class="bbox-label">Person 0.92</div>
+                            </div>
+                            <!-- Background Car Right -->
+                            <div class="bbox" style="top: 45%; left: 78%; width: 18%; height: 22%;">
+                                <div class="bbox-label">Vehicle 0.85</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Native Range Input (Hidden overlay to control the slider natively for touch/mouse) -->
+                    <input type="range" min="0" max="100" x-model="sliderPos" class="absolute inset-0 w-full h-full opacity-0 z-20 slider-input m-0 p-0">
+                    
+                    <!-- Visual Divider Line -->
+                    <div class="absolute top-0 bottom-0 w-1 bg-white shadow-[0_0_10px_rgba(0,0,0,0.5)] z-10 flex items-center justify-center pointer-events-none" 
+                         :style="`left: ${sliderPos}%`">
+                        <!-- Handle Icon -->
+                        <div class="w-10 h-10 bg-white rounded-full shadow-lg border-2 border-slate-200 flex items-center justify-center absolute -ml-[20px]">
+                            <svg class="w-5 h-5 text-slate-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M8 9l4-4 4 4m0 6l-4 4-4-4" transform="rotate(90 12 12)" />
+                            </svg>
+                        </div>
+                    </div>
+                    
+                    <!-- Overlaid Text Labels -->
+                    <div class="absolute top-4 left-4 bg-black/70 backdrop-blur-sm text-white px-3 py-1.5 text-sm font-bold rounded shadow-sm pointer-events-none z-10 uppercase tracking-wide border border-white/10">Annotated</div>
+                    <div class="absolute top-4 right-4 bg-black/70 backdrop-blur-sm text-white px-3 py-1.5 text-sm font-bold rounded shadow-sm pointer-events-none z-10 uppercase tracking-wide border border-white/10">Original</div>
+                </div>
+            </div>
+
+            <div class="text-center mt-12">
+                <a href="#contact" class="inline-flex justify-center items-center px-8 py-3.5 border border-slate-300 shadow-md text-base font-bold rounded-lg text-slate-700 bg-white hover:bg-slate-50 transition transform hover:-translate-y-0.5">
+                    Request a Sample Annotation
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="quality" class="py-24 bg-white relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center max-w-3xl mx-auto mb-20">
+                <h2 class="text-3xl font-extrabold text-slate-900 tracking-tight sm:text-4xl mb-4">Quality Built Into Every Dataset</h2>
+                <p class="text-lg text-slate-600 font-medium">Consistent annotation requires more than labeling. Our workflow includes structured guidelines and rigorous quality review before delivery.</p>
+            </div>
+
+            <div class="relative max-w-5xl mx-auto">
+                <!-- Connecting Line (Desktop) -->
+                <div class="hidden md:block absolute top-10 left-0 w-full h-1 bg-slate-100 z-0 rounded-full"></div>
+                <div class="hidden md:block absolute top-10 left-0 w-3/4 h-1 bg-gradient-to-r from-brand-400 to-transparent z-0 rounded-full"></div>
+                
+                <div class="grid grid-cols-1 gap-12 md:grid-cols-4 md:gap-6 relative z-10">
+                    <!-- Step 1 -->
+                    <div class="relative bg-white pt-2 md:pt-0">
+                        <div class="w-20 h-20 bg-slate-900 text-white text-2xl font-black rounded-2xl flex items-center justify-center mb-6 shadow-xl border-4 border-white md:mx-auto">01</div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-3 md:text-center">Annotation Guidelines</h3>
+                        <p class="text-slate-600 text-sm md:text-center leading-relaxed">We establish project-specific classes, labeling rules, visual examples, and handle edge cases systematically.</p>
+                    </div>
+                    <!-- Step 2 -->
+                    <div class="relative bg-white pt-2 md:pt-0">
+                        <div class="w-20 h-20 bg-brand-500 text-white text-2xl font-black rounded-2xl flex items-center justify-center mb-6 shadow-xl border-4 border-white md:mx-auto">02</div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-3 md:text-center">Human Annotation</h3>
+                        <p class="text-slate-600 text-sm md:text-center leading-relaxed">Trained annotators process the dataset precisely according to the approved project guidelines and methodology.</p>
+                    </div>
+                    <!-- Step 3 -->
+                    <div class="relative bg-white pt-2 md:pt-0">
+                        <div class="w-20 h-20 bg-brand-700 text-white text-2xl font-black rounded-2xl flex items-center justify-center mb-6 shadow-xl border-4 border-white md:mx-auto">03</div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-3 md:text-center">Quality Review</h3>
+                        <p class="text-slate-600 text-sm md:text-center leading-relaxed">Completed annotations are reviewed internally for missing labels, incorrect classifications, and boundary errors.</p>
+                    </div>
+                    <!-- Step 4 -->
+                    <div class="relative bg-white pt-2 md:pt-0">
+                        <div class="w-20 h-20 bg-slate-900 text-white text-2xl font-black rounded-2xl flex items-center justify-center mb-6 shadow-xl border-4 border-white md:mx-auto">04</div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-3 md:text-center">Final Validation</h3>
+                        <p class="text-slate-600 text-sm md:text-center leading-relaxed">The approved dataset is compiled and formatted according to the required delivery schema (e.g., COCO, YOLO).</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-slate-50 border-y border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+                <!-- How We Work -->
+                <div>
+                    <h2 class="text-3xl font-extrabold text-slate-900 tracking-tight mb-8">From Dataset to Delivery</h2>
+                    <div class="space-y-8">
+                        <div class="flex gap-5 group">
+                            <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-white border border-brand-200 text-brand-600 flex items-center justify-center font-black text-lg shadow-sm group-hover:bg-brand-600 group-hover:text-white transition">1</div>
+                            <div>
+                                <h4 class="text-lg font-bold text-slate-900">Share Requirements</h4>
+                                <p class="text-slate-600 text-sm mt-1 leading-relaxed">Send your dataset, annotation instructions, classes, expected volume, and output requirements.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-5 group">
+                            <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-white border border-brand-200 text-brand-600 flex items-center justify-center font-black text-lg shadow-sm group-hover:bg-brand-600 group-hover:text-white transition">2</div>
+                            <div>
+                                <h4 class="text-lg font-bold text-slate-900">Sample & Alignment</h4>
+                                <p class="text-slate-600 text-sm mt-1 leading-relaxed">We annotate a small sample to confirm the labeling methodology and quality expectations before scaling.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-5 group">
+                            <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-white border border-brand-200 text-brand-600 flex items-center justify-center font-black text-lg shadow-sm group-hover:bg-brand-600 group-hover:text-white transition">3</div>
+                            <div>
+                                <h4 class="text-lg font-bold text-slate-900">Production Annotation</h4>
+                                <p class="text-slate-600 text-sm mt-1 leading-relaxed">The scalable annotation workforce processes the approved dataset efficiently.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-5 group">
+                            <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-white border border-brand-200 text-brand-600 flex items-center justify-center font-black text-lg shadow-sm group-hover:bg-brand-600 group-hover:text-white transition">4</div>
+                            <div>
+                                <h4 class="text-lg font-bold text-slate-900">Quality Control</h4>
+                                <p class="text-slate-600 text-sm mt-1 leading-relaxed">The completed work goes through a structured, multi-pass review process.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-5 group">
+                            <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-white border border-brand-200 text-brand-600 flex items-center justify-center font-black text-lg shadow-sm group-hover:bg-brand-600 group-hover:text-white transition">5</div>
+                            <div>
+                                <h4 class="text-lg font-bold text-slate-900">Final Delivery</h4>
+                                <p class="text-slate-600 text-sm mt-1 leading-relaxed">The approved dataset is delivered securely in the agreed format.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-10">
+                        <a href="#contact" class="inline-flex justify-center items-center px-6 py-3 border border-transparent text-base font-bold rounded-lg shadow-md text-white bg-slate-900 hover:bg-slate-800 transition">
+                            Start a Pilot Project
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Scalability Section -->
+                <div class="bg-white p-8 md:p-10 rounded-3xl shadow-xl border border-slate-200 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-brand-50 rounded-full -mr-16 -mt-16 z-0"></div>
+                    <div class="relative z-10">
+                        <h2 class="text-2xl font-extrabold text-slate-900 tracking-tight mb-3">Scale Your Annotation Workforce When You Need It</h2>
+                        <p class="text-slate-600 mb-8 text-sm font-medium leading-relaxed">Start with a pilot and expand capacity as your dataset grows. Our flexible workforce model allows us to allocate additional annotators according to dataset size, project deadlines, and annotation complexity.</p>
+                        
+                        <div class="space-y-4">
+                            <div class="p-5 border border-slate-200 rounded-xl bg-slate-50 hover:border-brand-300 transition">
+                                <h4 class="font-bold text-slate-900 flex justify-between items-center text-lg">
+                                    Stage 1: Pilot
+                                    <span class="text-xs bg-white border border-slate-200 text-slate-700 px-2.5 py-1 rounded-md font-semibold shadow-sm">1-5 Annotators</span>
+                                </h4>
+                                <p class="text-sm text-slate-500 mt-2 font-medium">Small dataset • Sample validation • Workflow alignment</p>
+                            </div>
+                            <div class="p-5 border-2 border-brand-500 rounded-xl bg-brand-50 relative shadow-sm">
+                                <h4 class="font-bold text-brand-900 flex justify-between items-center text-lg">
+                                    Stage 2: Production
+                                    <span class="text-xs bg-brand-600 text-white px-2.5 py-1 rounded-md font-semibold shadow-sm">5-20 Annotators</span>
+                                </h4>
+                                <p class="text-sm text-brand-800 mt-2 font-medium">Dedicated annotation capacity • Regular QA • Scheduled delivery</p>
+                            </div>
+                            <div class="p-5 border border-slate-200 rounded-xl bg-white hover:border-brand-300 transition">
+                                <h4 class="font-bold text-slate-900 flex justify-between items-center text-lg">
+                                    Stage 3: Scale
+                                    <span class="text-xs bg-slate-900 text-white px-2.5 py-1 rounded-md font-semibold shadow-sm">20-50+ Annotators</span>
+                                </h4>
+                                <p class="text-sm text-slate-500 mt-2 font-medium">Expanded workforce • Large dataset processing • Flexible capacity</p>
+                            </div>
+                        </div>
+
+                        <div class="mt-8 text-center text-sm font-bold text-slate-800 bg-slate-100 py-3.5 rounded-lg border border-slate-200 uppercase tracking-wide">
+                            Project Capacity: 5–50+ Annotators
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 bg-white border-b border-slate-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-2xl font-extrabold text-slate-900 mb-8 tracking-tight">Flexible Data Delivery Formats</h2>
+            <div class="flex flex-wrap justify-center gap-4 mb-6">
+                <span class="px-6 py-2.5 bg-white text-slate-800 font-bold rounded-lg border-2 border-slate-200 shadow-sm hover:border-brand-400 transition cursor-default">YOLO</span>
+                <span class="px-6 py-2.5 bg-white text-slate-800 font-bold rounded-lg border-2 border-slate-200 shadow-sm hover:border-brand-400 transition cursor-default">COCO</span>
+                <span class="px-6 py-2.5 bg-white text-slate-800 font-bold rounded-lg border-2 border-slate-200 shadow-sm hover:border-brand-400 transition cursor-default">JSON</span>
+                <span class="px-6 py-2.5 bg-white text-slate-800 font-bold rounded-lg border-2 border-slate-200 shadow-sm hover:border-brand-400 transition cursor-default">CSV</span>
+                <span class="px-6 py-2.5 bg-white text-slate-800 font-bold rounded-lg border-2 border-slate-200 shadow-sm hover:border-brand-400 transition cursor-default">XML</span>
+                <span class="px-6 py-2.5 bg-brand-50 text-brand-700 font-bold rounded-lg border-2 border-brand-200 shadow-sm cursor-default">Custom Client Formats</span>
+            </div>
+            <p class="text-sm font-medium text-slate-500">Need a specific format? Tell us your requirements.</p>
+        </div>
+    </section>
+
+    <section class="py-24 bg-slate-900 text-white relative">
+        <!-- Background image with heavy overlay for texture -->
+        <div class="absolute inset-0 z-0 opacity-10">
+            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=2000" class="w-full h-full object-cover" alt="Data background">
+        </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl font-extrabold tracking-tight sm:text-4xl mb-4">Built for AI & Computer Vision Applications</h2>
+                <p class="text-lg text-slate-400 font-medium">We support diverse annotation workflows across technical sectors.</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-slate-850 border border-slate-700 p-6 rounded-2xl hover:bg-slate-800 transition shadow-lg">
+                    <h3 class="text-lg font-bold mb-2 text-white">Autonomous Mobility</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">Vehicles, pedestrians, road objects, and complex traffic scenes.</p>
+                </div>
+                <div class="bg-slate-850 border border-slate-700 p-6 rounded-2xl hover:bg-slate-800 transition shadow-lg">
+                    <h3 class="text-lg font-bold mb-2 text-white">Retail & E-commerce</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">Products, retail shelves, packaging tracking, and inventory validation.</p>
+                </div>
+                <div class="bg-slate-850 border border-slate-700 p-6 rounded-2xl hover:bg-slate-800 transition shadow-lg">
+                    <h3 class="text-lg font-bold mb-2 text-white">Agriculture</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">Crops, plant health mapping, fruits, and agricultural machinery.</p>
+                </div>
+                <div class="bg-slate-850 border border-slate-700 p-6 rounded-2xl hover:bg-slate-800 transition shadow-lg">
+                    <h3 class="text-lg font-bold mb-2 text-white">Manufacturing</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">Equipment monitoring, component detection, and industrial defect spotting.</p>
+                </div>
+                <div class="bg-slate-850 border border-slate-700 p-6 rounded-2xl hover:bg-slate-800 transition shadow-lg">
+                    <h3 class="text-lg font-bold mb-2 text-white">Robotics</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">Object detection, grasping point mapping, and environment understanding.</p>
+                </div>
+                <div class="bg-slate-850 border border-slate-700 p-6 rounded-2xl hover:bg-slate-800 transition shadow-lg">
+                    <h3 class="text-lg font-bold mb-2 text-white">Smart Cities</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">Traffic density analysis, vehicle counting, pedestrians, and infrastructure.</p>
+                </div>
+                <div class="bg-slate-850 border border-slate-700 p-6 rounded-2xl hover:bg-slate-800 transition shadow-lg">
+                    <h3 class="text-lg font-bold mb-2 text-white">Security & Monitoring</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">Object tracking and event-related visual datasets for monitoring systems.</p>
+                </div>
+                <div class="bg-slate-850 border border-slate-700 p-6 rounded-2xl hover:bg-slate-800 transition shadow-lg">
+                    <h3 class="text-lg font-bold mb-2 text-white">Healthcare Imaging</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">Image labeling workflows subject to client requirements and privacy controls.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-white border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col lg:flex-row gap-16 items-center">
+            <div class="lg:w-1/2">
+                <h2 class="text-3xl font-extrabold text-slate-900 mb-6 tracking-tight">Your Data. Handled Responsibly.</h2>
+                <p class="text-slate-600 mb-8 text-lg font-medium">We understand that training datasets can contain sensitive or proprietary information. Our operational framework prioritizes discretion and controlled access.</p>
+                <ul class="space-y-4">
+                    <li class="flex items-start gap-4"><div class="w-6 h-6 rounded-full bg-brand-100 flex items-center justify-center flex-shrink-0 mt-0.5"><svg class="w-4 h-4 text-brand-700" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg></div> <span class="text-base text-slate-700 font-semibold">Controlled project access and restricted distribution</span></li>
+                    <li class="flex items-start gap-4"><div class="w-6 h-6 rounded-full bg-brand-100 flex items-center justify-center flex-shrink-0 mt-0.5"><svg class="w-4 h-4 text-brand-700" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg></div> <span class="text-base text-slate-700 font-semibold">Limited team access based on project assignment</span></li>
+                    <li class="flex items-start gap-4"><div class="w-6 h-6 rounded-full bg-brand-100 flex items-center justify-center flex-shrink-0 mt-0.5"><svg class="w-4 h-4 text-brand-700" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg></div> <span class="text-base text-slate-700 font-semibold">Confidential file handling and secure transfer methods</span></li>
+                    <li class="flex items-start gap-4"><div class="w-6 h-6 rounded-full bg-brand-100 flex items-center justify-center flex-shrink-0 mt-0.5"><svg class="w-4 h-4 text-brand-700" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg></div> <span class="text-base text-slate-700 font-semibold">NDA availability where required prior to project start</span></li>
+                </ul>
+            </div>
+            <div class="lg:w-1/2 w-full">
+                <div class="bg-slate-50 p-8 sm:p-10 rounded-3xl border border-slate-200 shadow-sm">
+                    <h3 class="text-xl font-extrabold text-slate-900 mb-8">A Flexible Partner for AI Data Operations</h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-8">
+                        <div>
+                            <h4 class="text-base font-bold text-slate-900 mb-1">Scalable Workforce</h4>
+                            <p class="text-sm text-slate-600 font-medium">Project capacity expands according to workload.</p>
+                        </div>
+                        <div>
+                            <h4 class="text-base font-bold text-slate-900 mb-1">Human Annotation</h4>
+                            <p class="text-sm text-slate-600 font-medium">Human-reviewed labeling based on instructions.</p>
+                        </div>
+                        <div>
+                            <h4 class="text-base font-bold text-slate-900 mb-1">Quality Control</h4>
+                            <p class="text-sm text-slate-600 font-medium">Dedicated review process before delivery.</p>
+                        </div>
+                        <div>
+                            <h4 class="text-base font-bold text-slate-900 mb-1">Flexible Projects</h4>
+                            <p class="text-sm text-slate-600 font-medium">Support for pilots as well as larger workflows.</p>
+                        </div>
+                        <div>
+                            <h4 class="text-base font-bold text-slate-900 mb-1">Custom Guidelines</h4>
+                            <p class="text-sm text-slate-600 font-medium">Workflows adapted to specific instructions.</p>
+                        </div>
+                        <div>
+                            <h4 class="text-base font-bold text-slate-900 mb-1">Direct Communication</h4>
+                            <p class="text-sm text-slate-600 font-medium">Clear communication throughout lifecycle.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="portfolio" class="py-24 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl font-extrabold text-slate-900 tracking-tight sm:text-4xl mb-4">Annotation Portfolio</h2>
+                <p class="text-lg text-slate-600 font-medium">Examples of our technical capability across various annotation types.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Portfolio Item 1: Object Detection (Real Traffic Image) -->
+                <div class="bg-white rounded-2xl shadow-md border border-slate-200 overflow-hidden group hover:shadow-xl transition duration-300">
+                    <div class="aspect-video relative overflow-hidden bg-slate-900">
+                        <img src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover opacity-80" alt="Traffic Demo">
+                        <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-300 bg-black/10">
+                             <!-- CSS Drawn Bounding Boxes Over Unsplash Image -->
+                             <div class="bbox" style="top: 30%; left: 15%; width: 70%; height: 55%;"><div class="bbox-label">Car</div></div>
+                        </div>
+                        <div class="absolute bottom-3 right-3 bg-black/80 backdrop-blur text-white text-[10px] font-bold px-2.5 py-1.5 rounded uppercase tracking-wider">Internal Demo</div>
+                    </div>
+                    <div class="p-6">
+                        <div class="text-xs font-black text-brand-600 uppercase tracking-widest mb-2">Bounding Box</div>
+                        <h3 class="text-lg font-bold text-slate-900">Dense Traffic Object Detection</h3>
+                    </div>
+                </div>
+
+                <!-- Portfolio Item 2: Retail Segmentation (Real Shelf Image) -->
+                <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden group hover:shadow-xl transition duration-300">
+                    <div class="aspect-[4/3] sm:aspect-video relative overflow-hidden bg-slate-900">
+                        <img src="https://images.unsplash.com/photo-1578916171728-46686eac8d58?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover opacity-90 transition group-hover:opacity-70" alt="Retail Shelf">
+                        
+                        <!-- Mapped Boxes for Retail Bottles -->
+                        <div class="cv-layer opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <!-- Top Shelf Bottles -->
+                            <div class="bbox bbox-pink" style="top: 35%; left: 18%; width: 10%; height: 22%;"></div>
+                            
+                            
+                            <div class="bbox bbox-pink" style="top: 34%; left: 70%; width: 9%; height: 23%;"></div>
+                            
+                            <!-- Bottom Shelf Bottles -->
+                            <div class="bbox bbox-pink" style="top: 70%; left: 17%; width: 10%; height: 25%;"></div>
+                            
+                            <div class="bbox bbox-pink" style="top: 67%; left: 76%; width: 10%; height: 28%;"></div>
+                        </div>
+                        
+                        <div class="absolute bottom-3 right-3 bg-slate-900 text-white text-[10px] font-bold px-2 py-1 rounded shadow uppercase tracking-wide border border-slate-700">Internal Demo</div>
+                    </div>
+                    <div class="p-6">
+                        <div class="text-[10px] font-black text-brand-600 uppercase tracking-widest mb-1.5">Instance Detection</div>
+                        <h3 class="text-lg font-bold text-slate-900">Retail Inventory Tracking</h3>
+                    </div>
+                </div>
+
+                <!-- Portfolio Item 3: Keypoint (Real Sports Image) -->
+                <div class="bg-white rounded-2xl shadow-md border border-slate-200 overflow-hidden group hover:shadow-xl transition duration-300">
+                    <div class="aspect-video relative overflow-hidden bg-slate-900">
+                        <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover opacity-80" alt="Pose Demo">
+                        <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-300">
+                            <!-- CSS Drawn Keypoint Skeleton Over Runner -->
+                            <svg class="w-full h-full absolute top-0 left-0" preserveAspectRatio="none">
+                                <!-- Lines connecting nodes -->
+                                <line x1="45%" y1="20%" x2="48%" y2="40%" stroke="#3b82f6" stroke-width="3"/>
+                                <line x1="48%" y1="40%" x2="35%" y2="55%" stroke="#3b82f6" stroke-width="3"/>
+                                <line x1="48%" y1="40%" x2="55%" y2="60%" stroke="#3b82f6" stroke-width="3"/>
+                                <line x1="35%" y1="55%" x2="40%" y2="80%" stroke="#3b82f6" stroke-width="3"/>
+                                <line x1="55%" y1="60%" x2="50%" y2="90%" stroke="#3b82f6" stroke-width="3"/>
+                            </svg>
+                            <!-- Nodes -->
+                            <div class="kp-node" style="top: 20%; left: 45%;"></div> <!-- Head/Neck -->
+                            <div class="kp-node" style="top: 40%; left: 48%;"></div> <!-- Hip -->
+                            <div class="kp-node" style="top: 55%; left: 35%;"></div> <!-- Left Knee -->
+                            <div class="kp-node" style="top: 60%; left: 55%;"></div> <!-- Right Knee -->
+                            <div class="kp-node" style="top: 80%; left: 40%;"></div> <!-- Left Foot -->
+                            <div class="kp-node" style="top: 90%; left: 50%;"></div> <!-- Right Foot -->
+                        </div>
+                        <div class="absolute bottom-3 right-3 bg-black/80 backdrop-blur text-white text-[10px] font-bold px-2.5 py-1.5 rounded uppercase tracking-wider">Internal Demo</div>
+                    </div>
+                    <div class="p-6">
+                        <div class="text-xs font-black text-brand-600 uppercase tracking-widest mb-2">Keypoint Annotation</div>
+                        <h3 class="text-lg font-bold text-slate-900">Skeletal & Pose Estimation</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-slate-900 py-20 relative overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <div class="absolute inset-0 bg-brand-600/20 mix-blend-multiply"></div>
+            <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=2000" class="w-full h-full object-cover opacity-10" alt="Abstract Tech">
+        </div>
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+            <h2 class="text-3xl font-extrabold text-white mb-4 tracking-tight">Not Sure If We're the Right Fit?</h2>
+            <p class="text-slate-300 text-lg mb-8 max-w-2xl mx-auto font-medium">Send us a small sample dataset and let us demonstrate the annotation workflow, quality, and formatting before starting the full project.</p>
+            <a href="#contact" class="inline-flex justify-center items-center px-8 py-4 border border-transparent text-lg font-bold rounded-lg text-slate-900 bg-white hover:bg-brand-50 transition shadow-xl transform hover:scale-105">
+                Request a Sample
+            </a>
+            <p class="text-slate-400 text-sm mt-6 font-medium">Share a small dataset, annotation requirements, and expected output format.</p>
+        </div>
+    </section>
+
+    <section id="about" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col lg:flex-row gap-16 items-center">
+            <div class="lg:w-1/2">
+                <h2 class="text-3xl font-extrabold text-slate-900 tracking-tight mb-6">A Scalable Team Focused on AI Data</h2>
+                <p class="text-lg text-slate-600 mb-6 leading-relaxed font-medium">
+                    We provide human-powered image annotation and data labeling services for organizations developing AI and computer vision systems. 
+                </p>
+                <p class="text-lg text-slate-600 mb-8 leading-relaxed font-medium">
+                    Our approach combines a dedicated core team, structured quality workflows, and scalable project capacity to support different dataset sizes and annotation requirements efficiently.
+                </p>
+                <div class="flex flex-col sm:flex-row items-start sm:items-center gap-6">
+                    <div class="bg-slate-50 px-6 py-5 rounded-xl border border-slate-200 shadow-sm w-full sm:w-auto">
+                        <div class="text-xs font-black text-brand-600 uppercase tracking-widest mb-1">Project Capacity</div>
+                        <div class="text-3xl font-extrabold text-slate-900 mb-1">5–50+</div>
+                        <div class="text-sm font-semibold text-slate-600">Scalable Workforce</div>
+                    </div>
+                    <div class="bg-slate-50 px-6 py-5 rounded-xl border border-slate-200 shadow-sm w-full sm:w-auto">
+                        <div class="text-xs font-black text-slate-500 uppercase tracking-widest mb-1">Registration</div>
+                        <div class="text-xl font-bold text-slate-800 mb-1">MSME</div>
+                        <div class="text-sm font-mono font-bold text-slate-600">UDYAM-WB-14-0202932</div>
+                    </div>
+                </div>
+            </div>
+            <div class="lg:w-1/2 relative w-full">
+                <!-- Professional Real Image -->
+                <div class="aspect-[4/3] bg-slate-900 rounded-3xl overflow-hidden relative border-8 border-slate-50 shadow-2xl">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1000" alt="Professional Data Operations" class="w-full h-full object-cover opacity-90">
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900/50 to-transparent"></div>
+                    <div class="absolute bottom-6 left-6 text-white">
+                        <div class="font-bold text-lg tracking-wide">Data Operations</div>
+                        <div class="text-sm text-slate-300">Secure & Controlled Workflows</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq" class="py-24 bg-slate-50 border-t border-slate-200" x-data="{ activeAccordion: null }">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-extrabold text-slate-900 tracking-tight">Frequently Asked Questions</h2>
+            </div>
+
+            <div class="space-y-4">
+                <!-- FAQ Item 1 -->
+                <div class="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm">
+                    <button @click="activeAccordion = activeAccordion === 1 ? null : 1" class="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none">
+                        <span class="font-bold text-slate-900">What types of images can you annotate?</span>
+                        <svg class="w-5 h-5 text-brand-500 transition-transform duration-300" :class="{'rotate-180': activeAccordion === 1}" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div x-show="activeAccordion === 1" x-collapse x-cloak>
+                        <div class="px-6 pb-5 text-slate-600 text-sm font-medium leading-relaxed border-t border-slate-100 pt-3">We handle standard visible spectrum imagery, including photographs, frames from videos, satellite imagery, and specialized industrial or agricultural captures, provided they are in standard formats (JPG, PNG).</div>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 2 -->
+                <div class="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm">
+                    <button @click="activeAccordion = activeAccordion === 2 ? null : 2" class="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none">
+                        <span class="font-bold text-slate-900">Can you handle bulk image datasets?</span>
+                        <svg class="w-5 h-5 text-brand-500 transition-transform duration-300" :class="{'rotate-180': activeAccordion === 2}" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div x-show="activeAccordion === 2" x-collapse x-cloak>
+                        <div class="px-6 pb-5 text-slate-600 text-sm font-medium leading-relaxed border-t border-slate-100 pt-3">Yes. Our scalable workforce model allows us to scale project capacity (5-50+ annotators) to manage and process large-volume dataset requirements efficiently.</div>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 3 -->
+                <div class="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm">
+                    <button @click="activeAccordion = activeAccordion === 3 ? null : 3" class="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none">
+                        <span class="font-bold text-slate-900">Can you provide a sample before starting?</span>
+                        <svg class="w-5 h-5 text-brand-500 transition-transform duration-300" :class="{'rotate-180': activeAccordion === 3}" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div x-show="activeAccordion === 3" x-collapse x-cloak>
+                        <div class="px-6 pb-5 text-slate-600 text-sm font-medium leading-relaxed border-t border-slate-100 pt-3">Absolutely. We encourage starting with a small pilot or sample batch to align on labeling methodology, instructions, and quality expectations before scaling to the full dataset.</div>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 4 -->
+                <div class="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm">
+                    <button @click="activeAccordion = activeAccordion === 4 ? null : 4" class="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none">
+                        <span class="font-bold text-slate-900">Do you support custom annotation guidelines?</span>
+                        <svg class="w-5 h-5 text-brand-500 transition-transform duration-300" :class="{'rotate-180': activeAccordion === 4}" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div x-show="activeAccordion === 4" x-collapse x-cloak>
+                        <div class="px-6 pb-5 text-slate-600 text-sm font-medium leading-relaxed border-t border-slate-100 pt-3">Yes, all our workflows are adapted to client-specific instructions. We rely on your documentation to train the assigned annotators on edge cases and class definitions.</div>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 5 -->
+                <div class="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm">
+                    <button @click="activeAccordion = activeAccordion === 5 ? null : 5" class="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none">
+                        <span class="font-bold text-slate-900">Which annotation formats can you deliver?</span>
+                        <svg class="w-5 h-5 text-brand-500 transition-transform duration-300" :class="{'rotate-180': activeAccordion === 5}" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div x-show="activeAccordion === 5" x-collapse x-cloak>
+                        <div class="px-6 pb-5 text-slate-600 text-sm font-medium leading-relaxed border-t border-slate-100 pt-3">We commonly deliver in standard industry formats such as YOLO, COCO, JSON, XML, and CSV. If you have a proprietary internal format, let us know your requirements.</div>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 6 -->
+                <div class="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm">
+                    <button @click="activeAccordion = activeAccordion === 6 ? null : 6" class="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none">
+                        <span class="font-bold text-slate-900">Can you sign an NDA?</span>
+                        <svg class="w-5 h-5 text-brand-500 transition-transform duration-300" :class="{'rotate-180': activeAccordion === 6}" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div x-show="activeAccordion === 6" x-collapse x-cloak>
+                        <div class="px-6 pb-5 text-slate-600 text-sm font-medium leading-relaxed border-t border-slate-100 pt-3">Yes, we understand the sensitive nature of pre-production AI training data. We are able to sign Non-Disclosure Agreements prior to receiving your dataset or guidelines.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-24 bg-white relative">
+        <div class="absolute inset-0 bg-brand-50/50 -z-10"></div>
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <h2 class="text-3xl font-extrabold text-slate-900 tracking-tight sm:text-4xl mb-4">Let's Discuss Your Dataset</h2>
+                <p class="text-lg text-slate-600 font-medium">Tell us what you need labeled, how much data you have, and your expected timeline.</p>
+            </div>
+
+            <div class="bg-white rounded-3xl p-8 sm:p-12 border border-slate-200 shadow-xl">
+                <!-- Hidden Iframe to prevent page redirect -->
+<script>var submitted = false;</script>
+<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted) { document.getElementById('success-message').style.display='block'; document.getElementById('axcentra-form').reset(); submitted=false; }"></iframe>
+
+<form id="axcentra-form" action="https://docs.google.com/forms/d/e/1FAIpQLSfVcQdIxsdlarZEbNIF7Fd-TdiIOPZwmT_TRI8fVTHfyH9UlQ/formResponse" method="POST" target="hidden_iframe" onsubmit="submitted=true;" class="space-y-6">
+    
+    <!-- Hidden input to track Enquiry Type (Sample vs Quote) -->
+    <input type="hidden" id="enquiry_type" name="entry.1373200313" value="Request a Quote">
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- Left Column -->
+        <div class="space-y-5">
+            <div>
+                <label class="block text-sm font-bold text-slate-700 mb-2">Full Name</label>
+                <input type="text" name="entry.107918892" required class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-brand-500 text-sm font-medium bg-slate-50 focus:bg-white transition" placeholder="John Doe">
+            </div>
+            <div>
+                <label class="block text-sm font-bold text-slate-700 mb-2">Company Name</label>
+                <input type="text" name="entry.1330350737" class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-brand-500 text-sm font-medium bg-slate-50 focus:bg-white transition" placeholder="Acme AI Corp">
+            </div>
+            <div>
+                <label class="block text-sm font-bold text-slate-700 mb-2">Business Email</label>
+                <input type="email" name="entry.1846116541" required class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-brand-500 text-sm font-medium bg-slate-50 focus:bg-white transition" placeholder="john@company.com">
+            </div>
+            <div>
+                <label class="block text-sm font-bold text-slate-700 mb-2">Phone / WhatsApp</label>
+                <input type="text" name="entry.35722030" class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-brand-500 text-sm font-medium bg-slate-50 focus:bg-white transition" placeholder="+1 (555) 000-0000">
+            </div>
+            <div>
+                <label class="block text-sm font-bold text-slate-700 mb-2">Dataset / Drive Link (Optional)</label>
+                <input type="url" name="entry.1029854563" class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-brand-500 text-sm font-medium bg-slate-50 focus:bg-white transition" placeholder="https://drive.google.com/...">
+            </div>
+        </div>
+
+        <!-- Right Column -->
+        <div class="space-y-5">
+            <div>
+                <label class="block text-sm font-bold text-slate-700 mb-2">Dataset Type</label>
+                <!-- Note: This field was missing in your Google Form, so it won't send data, but UI will look the same -->
+                <select class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-brand-500 text-sm font-medium bg-slate-50 focus:bg-white transition appearance-none">
+                    <option value="">Select Type...</option>
+                    <option value="Images">Images</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+            <div class="grid grid-cols-2 gap-4">
+                <div>
+                    <label class="block text-sm font-bold text-slate-700 mb-2">Approx. Size</label>
+                    <input type="text" name="entry.528661692" class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-brand-500 text-sm font-medium bg-slate-50 focus:bg-white transition" placeholder="e.g. 10,000 imgs">
+                </div>
+                <div>
+                    <label class="block text-sm font-bold text-slate-700 mb-2">Timeline</label>
+                    <input type="text" name="entry.1405587254" class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-brand-500 text-sm font-medium bg-slate-50 focus:bg-white transition" placeholder="e.g. 4 weeks">
+                </div>
+            </div>
+            <div>
+                <label class="block text-sm font-bold text-slate-700 mb-2">Annotation Type Needed</label>
+                <select name="entry.764820797" class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-brand-500 text-sm font-medium bg-slate-50 focus:bg-white transition appearance-none">
+                    <option value="">Select Type...</option>
+                    <option value="Bounding Box">Bounding Box</option>
+                    <option value="Image Labeling">Image Labeling</option>
+                    <option value="Document Annotation">Document Annotation</option>
+                    <option value="Text Annotation">Text Annotation</option>
+                    <option value="Image Classification">Image Classification</option>
+                    <option value="Mixed / Custom">Mixed / Custom</option>
+                </select>
+            </div>
+            <div>
+                <label class="block text-sm font-bold text-slate-700 mb-2">Required Output Format</label>
+                <input type="text" name="entry.1621834122" class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-brand-500 text-sm font-medium bg-slate-50 focus:bg-white transition" placeholder="e.g. YOLO, COCO, JSON">
+            </div>
+        </div>
+    </div>
+    
+    <div class="pt-2">
+        <label class="block text-sm font-bold text-slate-700 mb-2">Project Requirements / Instructions</label>
+        <textarea name="entry.1516766958" rows="4" class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-brand-500 text-sm font-medium bg-slate-50 focus:bg-white transition" placeholder="Briefly describe the classes, labeling rules, or edge cases..."></textarea>
+    </div>
+
+    <!-- Success Message (Hidden by default) -->
+    <div id="success-message" style="display: none;" class="p-4 rounded-lg bg-green-50 border border-green-200 text-green-700 text-sm font-bold text-center mt-4">
+        Thank you. Your enquiry has been received. Our team will get back to you shortly.
+    </div>
+
+    <div class="flex flex-col sm:flex-row gap-4 items-center justify-end border-t border-slate-200 pt-8 mt-8">
+        <button type="submit" onclick="document.getElementById('enquiry_type').value = 'Request a Sample';" class="w-full sm:w-auto px-6 py-3.5 border border-slate-300 shadow-sm text-sm font-bold rounded-lg text-slate-700 bg-white hover:bg-slate-50 transition">
+            Request a Sample
+        </button>
+        <button type="submit" onclick="document.getElementById('enquiry_type').value = 'Request a Quote';" class="w-full sm:w-auto px-8 py-3.5 border border-transparent shadow-lg shadow-brand-500/30 text-sm font-bold rounded-lg text-white bg-brand-600 hover:bg-brand-700 transition transform hover:-translate-y-0.5">
+            Request a Quote
+        </button>
+    </div>
+</form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-slate-900 text-slate-400 py-16 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12 border-b border-slate-800 pb-12">
+                
+                <div class="col-span-1 md:col-span-1">
+                    <a href="#" class="flex items-center gap-2 mb-6">
+                        <!-- LOCAL LOGO PLACEHOLDER FOR FOOTER -->
+                        <img src="logo.png" alt="Axcentra Logo" class="h-12 w-auto object-contain group-hover:scale-105 transition transform">>
+                        <span class="font-extrabold text-xl text-white tracking-tight">Axcentra</span>
+                    </a>
+                    <p class="text-sm text-slate-400 mb-6 font-medium leading-relaxed">AI Image Annotation & Data Labeling Services for computer vision teams.</p>
+                    <p class="text-xs font-mono font-bold text-slate-500 bg-slate-800 inline-block px-3 py-1.5 rounded border border-slate-700">MSME: UDYAM-WB-14-0202932</p>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-bold mb-6 text-sm uppercase tracking-widest">Navigation</h4>
+                    <ul class="space-y-3 text-sm font-medium">
+                        <li><a href="#" class="hover:text-brand-400 transition">Home</a></li>
+                        <li><a href="#services" class="hover:text-brand-400 transition">Services</a></li>
+                        <li><a href="#quality" class="hover:text-brand-400 transition">Quality & QA</a></li>
+                        <li><a href="#portfolio" class="hover:text-brand-400 transition">Portfolio Examples</a></li>
+                        <li><a href="#process" class="hover:text-brand-400 transition">Our Process</a></li>
+                        <li><a href="#about" class="hover:text-brand-400 transition">About Axcentra</a></li>
+                        <li><a href="#faq" class="hover:text-brand-400 transition">FAQ</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-bold mb-6 text-sm uppercase tracking-widest">Legal</h4>
+                    <ul class="space-y-3 text-sm font-medium">
+                        <li><a href="#" class="hover:text-brand-400 transition">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-brand-400 transition">Terms of Service</a></li>
+                        <li><a href="#" class="hover:text-brand-400 transition">Confidentiality / NDA</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-bold mb-6 text-sm uppercase tracking-widest">Contact Info</h4>
+                    <ul class="space-y-4 text-sm font-medium">
+                        <li class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-slate-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                            Kolkata, West Bengal,<br>India
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <svg class="w-5 h-5 text-slate-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
+                            +91 7024276449 - contact@axcentra.in
+                        </li>
+                        <li class="flex items-center gap-4 mt-6 pt-2">
+                            <a href="#" class="text-slate-500 hover:text-white transition" aria-label="LinkedIn">
+                                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                            </a>
+                            <a href="#" class="text-slate-500 hover:text-white transition" aria-label="Email">
+                                <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="text-sm font-medium text-center text-slate-600 flex flex-col md:flex-row justify-between items-center gap-4">
+                <span>&copy; 2026 Axcentra. All rights reserved.</span>
+                <span>B2B AI Data Labeling Agency</span>
+            </div>
+        </div>
+    </footer>
+
 </body>
 </html>
